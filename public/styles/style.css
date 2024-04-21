@@ -1,0 +1,135 @@
+/*Overall style */
+body{
+    margin: 0%;
+    padding: 0%;
+}
+
+.container {  
+    display: grid;
+    grid-template-columns: 0.15fr 3fr 1fr;
+    grid-template-rows: 0.25fr 3.4fr 0.2fr;
+    gap: 15px 15px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Header Header Header"
+        "navbar main sidebar"
+        "footer footer footer";
+    /*to control container default css*/        
+    height: 100vh;
+    margin: 0% !important;
+    max-width: 100% !important;
+}
+
+.Header { 
+    grid-area: Header; 
+    background-color: black;
+}
+
+.sidebar { 
+    grid-area: sidebar;
+    background-color: aliceblue;
+ }
+
+ /*navbar style */
+.navbar { 
+    grid-area: navbar;
+    background-color: black;
+    border-radius: 25px;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70px;
+    gap: 20px;
+}
+
+.icons svg {
+    color: gainsboro; 
+    width: 20px;
+    height: 20px;
+}
+.icons svg:hover{
+    background-color: #CAF746;
+    border-radius: 50%;
+    color: black;
+    width: 40px;
+}
+
+/* main style */
+.main {  
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-rows: 0.4fr 1.6fr 0.4fr 1.6fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "title title"
+        "daily-challenges daily-challenges"
+        "Title Title"
+        "monthly-challenges monthly-challenges";
+    grid-area: main;
+    background-color: black;
+}
+
+.title , .Title{ 
+    grid-area: title; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    background-color: aliceblue;    
+}
+h2:nth-child(1) {
+    flex-grow: 1;
+}
+
+.daily-challenges, .monthly-challenges {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 10px 10px; 
+    grid-template-areas: 
+      "activity-one activity-two"
+      "activity-one activity-two"
+      "activity-three activity-four"
+      "activity-three activity-four"; 
+    grid-area: daily-challenges; 
+}
+
+.activity-one, .activity-two, .activity-three, .activity-four { 
+    grid-area: activity-one;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+
+.activity-two { 
+    grid-area: activity-two; 
+}
+.activity-three {
+     grid-area: activity-three;  
+ }
+.activity-four { 
+    grid-area: activity-four; 
+}
+
+.Title{ 
+    grid-area: Title;
+}
+
+.seeAll{
+    border: none;
+    background-color: aliceblue;
+}
+.monthly-challenges { 
+    grid-area: monthly-challenges; 
+}
+
+.footer {
+    grid-area: footer; 
+    background-color: brown;
+}
+
+
+
