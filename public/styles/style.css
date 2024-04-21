@@ -20,15 +20,59 @@ body{
     max-width: 100% !important;
 }
 
+/*header style*/
 .Header { 
     grid-area: Header; 
     background-color: black;
+    font-family: "Playfair Display", serif;
+    color: aliceblue;
+    font-weight: 400;  
 }
 
-.sidebar { 
-    grid-area: sidebar;
+/*sidebar style */
+.sidebar {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1.4fr 1.4fr 0.2fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "profile"
+      "calendar"
+      "badges-title"
+      "badges"; 
+    grid-area: sidebar; 
     background-color: aliceblue;
+}
+.profile { 
+    grid-area: profile; 
+}
+.calendar { 
+    grid-area: calendar;
  }
+.badges-title {
+     grid-area: badges-title; 
+}
+.badges {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+        "first-badge first-badge first-badge"
+        "second-badge second-badge second-badge"
+        "third-badge third-badge third-badge"; 
+    grid-area: badges;    
+}
+
+.first-badge { 
+    grid-area: first-badge; 
+}
+.second-badge {
+    grid-area: second-badge; 
+}
+.third-badge {
+    grid-area: third-badge; 
+}
 
  /*navbar style */
 .navbar { 
@@ -85,7 +129,7 @@ h2:nth-child(1) {
     flex-grow: 1;
 }
 
-.daily-challenges, .monthly-challenges {
+.daily-challenges {
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     grid-template-rows: 1fr 1fr 1fr 1fr; 
@@ -114,6 +158,7 @@ h2:nth-child(1) {
     grid-area: activity-four; 
 }
 
+
 .Title{ 
     grid-area: Title;
 }
@@ -122,13 +167,27 @@ h2:nth-child(1) {
     border: none;
     background-color: aliceblue;
 }
-.monthly-challenges { 
+.monthly-challenges {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 10px; 
+    grid-template-areas: 
+      "activity1 activity2"; 
     grid-area: monthly-challenges; 
+}
+.activity1, .activity2{ 
+    grid-area: activity1;
+    border-radius: 20px;
+    background-color: aliceblue; 
+}
+.activity2 { 
+    grid-area: activity2; 
 }
 
 .footer {
     grid-area: footer; 
-    background-color: brown;
+    background-color: black;
 }
 
 
