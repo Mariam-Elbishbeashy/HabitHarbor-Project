@@ -76,6 +76,7 @@ body{
 
  /*navbar style */
 .navbar { 
+    height: 90vh;
     grid-area: navbar;
     background-color: black;
     border-radius: 25px;
@@ -86,20 +87,30 @@ body{
     flex-direction: column;
     align-items: center;
     width: 70px;
-    gap: 20px;
+    gap: 50px;
 }
-
-.icons svg {
-    color: gainsboro; 
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    transition: background-color 0.5s, color 0.5s; 
+}
+.icon-container svg {
+    color: gainsboro;
     width: 20px;
     height: 20px;
 }
-.icons svg:hover{
+.icon-container:hover {
     background-color: #CAF746;
-    border-radius: 50%;
-    color: black;
-    width: 40px;
 }
+.icon-container:hover i,
+.icon-container:hover svg {
+    color: black; 
+}
+
 
 /* main style */
 .main {  
@@ -114,7 +125,6 @@ body{
         "Title Title"
         "monthly-challenges monthly-challenges";
     grid-area: main;
-    background-color: black;
 }
 
 .title , .Title{ 
@@ -130,22 +140,45 @@ h2:nth-child(1) {
 }
 
 .daily-challenges {
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr; 
-    gap: 10px 10px; 
-    grid-template-areas: 
-      "activity-one activity-two"
-      "activity-one activity-two"
-      "activity-three activity-four"
-      "activity-three activity-four"; 
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 20px; 
     grid-area: daily-challenges; 
 }
+.activity-container {
+    perspective: 1000px; /* 3D transformations */
+}
+.activity {
+    /*activity-one, two, three, four, five*/
 
-.activity-one, .activity-two, .activity-three, .activity-four { 
-    grid-area: activity-one;
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out; /* for a smooth hovering */
     background-color: aliceblue;
     border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+    flex: 1 1 calc(100px); 
+
+}
+.activity:hover {
+    transform: rotateY(180deg);
+}
+.activity .front, .activity .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+}
+.activity .front {
+    background-color: aliceblue;
+}
+
+.activity .back {
+   
+    transform: rotateY(180deg);
 }
 
 .activity-two { 
@@ -157,7 +190,9 @@ h2:nth-child(1) {
 .activity-four { 
     grid-area: activity-four; 
 }
-
+.activity-five { 
+    grid-area: activity-five; 
+}
 
 .Title{ 
     grid-area: Title;
