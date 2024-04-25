@@ -2,11 +2,12 @@
 body{
     margin: 0%;
     padding: 0%;
+    background-color: #fbfafa;
 }
 
 .container {  
     display: grid;
-    grid-template-columns: 0.15fr 3fr 1fr;
+    grid-template-columns: 0.15fr 3fr 0.9fr;
     grid-template-rows: 0.25fr 3.4fr 0.2fr;
     gap: 15px 15px;
     grid-auto-flow: row;
@@ -18,19 +19,63 @@ body{
     height: 100vh;
     margin: 0% !important;
     max-width: 100% !important;
+    background-color: #fbfafa;
 }
 
 /*header style*/
 .Header { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     grid-area: Header; 
-    background-color: black;
     font-family: "Playfair Display", serif;
-    color: aliceblue;
-    font-weight: 400;  
+    color: black;
+    font-weight: 400;
+    border-bottom: 0.1px solid #000;
+
+}
+.website-name{
+    text-shadow: 2px 2px 5px grey;
+}
+.right-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.input-container{
+    padding-right: 20px;
+}
+.Header input{
+    height: 32px;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid;
+    padding-right: 30px; 
+    padding-left: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>');
+    background-repeat: no-repeat;
+    background-position: 95%; /* Position the icon at the right &   center */
+    box-sizing: border-box;
+    outline: none; 
+}
+.notifications, .logout{
+    background-color: #fbfafa;
+    color: black;
+    border: none;
+    border-radius: 100px;
+    padding-bottom:5px ;
+    transition: background-color 0.5s, color 0.5s;
+
+}
+.notifications:hover, .logout:hover{
+    background-color: #CAF746;
+    color: black;
 }
 
 /*sidebar style */
 .sidebar {
+    height: 90vh;
     display: grid; 
     grid-template-columns: 1fr; 
     grid-template-rows: 1.4fr 1.4fr 0.2fr 1fr; 
@@ -41,7 +86,12 @@ body{
       "badges-title"
       "badges"; 
     grid-area: sidebar; 
-    background-color: aliceblue;
+    background-color: #fbfafa;
+    border-radius: 10px;
+    border-left: 0.1px solid #000;
+    border-top-left-radius:0px ;
+    border-bottom-left-radius:0px ;
+    
 }
 .profile { 
     grid-area: profile; 
@@ -53,32 +103,20 @@ body{
      grid-area: badges-title; 
 }
 .badges {
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr; 
+    display: flex; 
+    flex-wrap: wrap;
     gap: 0px 0px; 
-    grid-template-areas: 
-        "first-badge first-badge first-badge"
-        "second-badge second-badge second-badge"
-        "third-badge third-badge third-badge"; 
     grid-area: badges;    
-}
-
-.first-badge { 
-    grid-area: first-badge; 
-}
-.second-badge {
-    grid-area: second-badge; 
-}
-.third-badge {
-    grid-area: third-badge; 
 }
 
  /*navbar style */
 .navbar { 
+    width: auto;
+    height: 90vh;
     grid-area: navbar;
     background-color: black;
     border-radius: 25px;
+    opacity: 0.9;
 }
 
 .icons {
@@ -86,27 +124,37 @@ body{
     flex-direction: column;
     align-items: center;
     width: 70px;
-    gap: 20px;
+    gap: 50px;
 }
-
-.icons svg {
-    color: gainsboro; 
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    transition: background-color 0.5s, color 0.5s; 
+}
+.icon-container svg {
+    color: gainsboro;
     width: 20px;
     height: 20px;
 }
-.icons svg:hover{
+.icon-container:hover {
     background-color: #CAF746;
-    border-radius: 50%;
-    color: black;
-    width: 40px;
 }
+.icon-container:hover i,
+.icon-container:hover svg {
+    color: black; 
+}
+
 
 /* main style */
 .main {  
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     grid-template-rows: 0.4fr 1.6fr 0.4fr 1.6fr;
-    gap: 0px 0px;
+    gap: 9px 9px;
     grid-auto-flow: row;
     grid-template-areas:
         "title title"
@@ -114,7 +162,7 @@ body{
         "Title Title"
         "monthly-challenges monthly-challenges";
     grid-area: main;
-    background-color: black;
+    overflow-y: auto; /*enables scrolling only on this part. navbar,sidebar,and header remain shown */
 }
 
 .title , .Title{ 
@@ -123,39 +171,55 @@ body{
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    background-color: aliceblue;    
+    color: black;
+    text-shadow: 2px 2px 9px grey;
 }
 h2:nth-child(1) {
     flex-grow: 1;
 }
 
 .daily-challenges {
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr; 
-    gap: 10px 10px; 
-    grid-template-areas: 
-      "activity-one activity-two"
-      "activity-one activity-two"
-      "activity-three activity-four"
-      "activity-three activity-four"; 
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 20px; 
     grid-area: daily-challenges; 
+    /* height: 80vh; */
 }
-
-.activity-one, .activity-two, .activity-three, .activity-four { 
-    grid-area: activity-one;
-    background-color: aliceblue;
+.activity-container {
+    perspective: 1000px; /* 3D transformations */
+}
+.activity {
+    /*activity-one, two, three, four, five*/
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out; /* for a smooth hovering */
+    background-color: white;
     border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+    flex: 1 1 calc(100px); 
+    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
+}
+.activity:hover {
+    transform: rotateY(180deg);
+}
+.activity .front, .activity .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    background-color: white;
+    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
+}
+.activity .front {
+    background-color: white;
 }
 
-.activity-two { 
-    grid-area: activity-two; 
-}
-.activity-three {
-     grid-area: activity-three;  
- }
-.activity-four { 
-    grid-area: activity-four; 
+.activity .back {
+   
+    transform: rotateY(180deg);
 }
 
 
@@ -165,30 +229,29 @@ h2:nth-child(1) {
 
 .seeAll{
     border: none;
-    background-color: aliceblue;
+    background-color: #fbfafa;
 }
 .monthly-challenges {
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr; 
-    gap: 0px 10px; 
-    grid-template-areas: 
-      "activity1 activity2"; 
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 20px; 
     grid-area: monthly-challenges; 
+    /* height: 80vh; */
 }
-.activity1, .activity2{ 
-    grid-area: activity1;
+.mactivity {
+    /*activity1, 2, and 3 */
+    width: 500px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out; /* for a smooth hovering */
+    background-color: white;
     border-radius: 20px;
-    background-color: aliceblue; 
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+    flex: 1 1 calc(100px); 
+    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(208, 211, 214) 100.2%); */
 }
-.activity2 { 
-    grid-area: activity2; 
-}
-
 .footer {
     grid-area: footer; 
     background-color: black;
 }
-
-
-
