@@ -341,10 +341,10 @@ h2:nth-child(1) {
     flex: 1 1 calc(100px); 
     /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
 }
-.activity:hover ,.mactivity:hover {
+.activity:hover {
     transform: rotateY(180deg);
 }
-.activity .front, .activity .back , .mactivity .front , .mactivity .back{
+.activity .front, .activity .back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -353,11 +353,11 @@ h2:nth-child(1) {
     background-color: white;
     /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
 }
-.activity .front , .mactivity .front{
+.activity .front {
     background-color: white;
 }
 
-.activity .back, .mactivity .back {  
+.activity .back{  
     transform: rotateY(180deg);
 }
 
@@ -370,6 +370,23 @@ h2:nth-child(1) {
     background-color: #fbfafa;
 }
 
+
+.weekly-challenges{
+    grid-area: weekly-challenges;
+}
+.wactivity {
+    /*activity-one, two, three, four, five*/
+    width: 400px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out; /* for a smooth hovering */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+    flex: 1 1 calc(100px); 
+    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
+}
 .monthly-challenges {
     display: flex; 
     flex-wrap: wrap;
@@ -377,13 +394,10 @@ h2:nth-child(1) {
     grid-area: monthly-challenges; 
     /* height: 80vh; */
 }
-.weekly-challenges{
-    grid-area: weekly-challenges;
-}
 .mactivity {
     /*activity1, 2, and 3 */
-    width: 470px;
-    height: 250px;
+    width: 500px;
+    height: 200px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s ease-in-out; /* for a smooth hovering */
