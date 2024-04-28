@@ -30,26 +30,26 @@ function showGeneral() {
     fileInput.click();
   }
   function toggleFontWeight(linkId) {
-    var links = document.querySelectorAll('.left-panel a'); // Select all links
+    var links = document.querySelectorAll('.left-panel a'); 
     links.forEach(function(link) {
-        if (link.id === linkId) { // If it's the clicked link
+        if (link.id === linkId) { 
             link.classList.add('active');
             link.style.fontWeight = 'bold';
-            link.style.color = '#CAF746'; // Change color to green
-        } else { // For other links
+            link.style.color = '#CAF746'; 
+        } else { 
             link.classList.remove('active');
             link.style.fontWeight = 'normal';
-            link.style.color = 'white'; // Change color to normal
+            link.style.color = 'white'; 
         }
     });
 }
 
-// Make 'General' button bold and green by default
+
 window.onload = function() {
     var generalLink = document.getElementById('generalLink');
     generalLink.classList.add('active');
     generalLink.style.fontWeight = 'bold';
-    generalLink.style.color = '#CAF746'; // Change color to green
+    generalLink.style.color = '#CAF746'; 
 };
 
 

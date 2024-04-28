@@ -53,7 +53,7 @@ body{
     padding-left: 20px;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>');
     background-repeat: no-repeat;
-    background-position: 95%; /* Position the icon at the right &   center */
+    background-position: 95%; 
     box-sizing: border-box;
     outline: none; 
   }
@@ -70,7 +70,7 @@ body{
     background-color: #CAF746;
     color: black;
   }
-  /*navbar style */
+
   .navbar { 
     width: auto;
     height: 90vh;
@@ -84,11 +84,9 @@ body{
     height: 30px;
     width: 30px;
     margin-left: 20px;
-    /* margin-top: -240px; */ /* Remove or adjust this line */
   }
   
   .icons {
-    /* margin-top: -310px; */ /* Remove or adjust this line */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,7 +121,6 @@ body{
   }
   
   
-  /* user.css */
   .card {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -131,15 +128,35 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     display: grid;
-    grid-template-columns: 200px auto; /* Adjust the width distribution */
-    grid-template-rows: 90vh; /* Set height to match the nav bar */
-    overflow: hidden; /* Hide overflow content */
+    grid-template-columns: 200px auto; 
+    grid-template-rows: 90vh; 
+    overflow: hidden; 
+    position: relative;
   }
   
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
-  
+  .top-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #CAF746; 
+    width: 100px; 
+    height: 100px; 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+  }
+
+.bigger-box {
+    z-index: 1; 
+}
+
+.smaller-box {
+    width: 80px; 
+    height: 80px; 
+    z-index: 2; 
+    
+}
   .left-panel {
     background-color: black;
     color: white;
@@ -156,7 +173,7 @@ body{
     left: 100%;
     width: 2px;
     height: 100%;
-    background: rgba(255, 255, 255, 0.5); /* Adjust the opacity here */
+    background: rgba(255, 255, 255, 0.5); 
   }
   
   .left-panel ul {
@@ -166,7 +183,7 @@ body{
   
   .left-panel li {
     padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Adjust the opacity here */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
     transition: background-color 0.3s, transform 0.3s;
   }
   
@@ -182,12 +199,12 @@ body{
   
   
   .left-panel li:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Change background color when hovered */
-    transform: scale(1.05); /* Scale up slightly on hover */
+    background-color: rgba(255, 255, 255, 0.1); 
+    transform: scale(1.05); 
   }
   
   .content {
-    margin-left: 220px; /* Adjust this value as needed */
+    margin-left: 220px; 
     padding: 10px;
   }
   
@@ -236,7 +253,7 @@ body{
   
   .name-fields {
     display: flex;
-    margin-bottom: 20px; /* Add some space between groups of inputs */
+    margin-bottom: 20px; 
   }
   
   .name-field {
@@ -246,4 +263,5 @@ body{
   .name-field:last-child {
     margin-right: 0;
   }
+  
   
