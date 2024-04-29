@@ -93,9 +93,9 @@
         <div class = "card">
             <div class="left-panel">
               <ul>
-                <li><a href="#" id="generalLink" class="active" onclick="toggleFontWeight('generalLink')">General</a></li>
-            <li><a href="#" id="infoLink" onclick="toggleFontWeight('infoLink')">Info</a></li>
-            <li><a href="#" id="passwordLink" onclick="toggleFontWeight('passwordLink')">Change Password</a></li>
+                <li><a href="#" id="generalLink" class="active" onclick="toggleFontWeight('generalLink'); toggleOption('general')">General</a></li>
+            <li><a href="#" id="infoLink" onclick="toggleFontWeight('infoLink'); toggleOption('info');">Info</a></li>
+            <li><a href="#" id="passwordLink" onclick="toggleFontWeight('passwordLink'); toggleOption('password');">Change Password</a></li>
               </ul>
             </div>
             <div id="generalContent" class="content">
@@ -128,6 +128,28 @@
                 </div>
               </div>
             </div>
+              <div id="infoContent" class="content" style="display: none;">
+        <!-- Info content here -->
+        <div class="profile-section">
+            <label for="age">Age:</label>
+            <input type="text" id="age" value="25" readonly>
+        </div>
+        <div class="profile-section">
+            <label for="height">Height:</label>
+            <input type="text" id="height" value="170cm" readonly>
+        </div>
+        <div class="profile-section">
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" value="65kg" readonly>
+        </div>
+        <div class="profile-section">
+            <label for="healthIssues">Health Issues:</label>
+            <textarea id="health-issues" name="health-issues" rows="6" cols="50" readonly>High blood pressure</textarea>
+        </div>
+    </div>
+    <div id="passwordContent" class="content" style="display: none;">
+        <p>password</p>
+    </div>
             <div class="top-box bigger-box"></div>
             <div class="top-box smaller-box"></div>
           </div>

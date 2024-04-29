@@ -120,7 +120,7 @@ body{
     background-color: black;
   }
   
-  
+  /*user profile*/
   .card {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -204,7 +204,8 @@ body{
   }
   
   .content {
-    margin-left: 220px; 
+    margin: 0 auto; 
+    max-width: 800px; 
     padding: 10px;
   }
   
@@ -264,4 +265,40 @@ body{
     margin-right: 0;
   }
   
+  #infoContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+  }
+
+  profile-section label {
+    font-weight: bold;
+  }
+  .profile-section input[type="text"] {
+    border: none;
+    background-color: #f2f2f2;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+  }
   
+  .profile-section input[type="text"]:focus {
+    outline: none;
+  }
+
+  input[type="text"], input[type="email"], input[type="password"], textarea {
+    border: none;
+    background-color: #f2f2f2;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    outline: none;
+    border: 2px solid #CAF746; 
+  }
