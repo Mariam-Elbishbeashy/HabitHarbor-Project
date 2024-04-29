@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <script src="../scripts/index.js"></script>
 </head>
 <body>
     <div class="container">
@@ -216,11 +217,13 @@
                     <div class="activity activity-fourh">
                         <div class="front">Add your Custom challenge</div>
                         <div class="back">
-                            <div class="plus-container">
-                                <i class="bi bi-plus-lg clickable" id="daily-plus-btn"></i>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-                                </svg>
+                            <div class="daily-plus-container">
+                                <button class="plus">
+                                    <i class="bi bi-plus-lg clickable" id="daily-plus-btn"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                    </svg>
+                                </button>
                             </div>
                             <input type="text" placeholder="Type a title here ..." class="custom-input" id="input-title">
                             <input type="text" placeholder="type the challenge here ..." class="custom-input" id="input-content">
@@ -230,35 +233,46 @@
             </div>
             <div class="ttitle">
                 <h2>Weekly Challenges</h2>
-                <i class="bi bi-plus-lg clickable"></i>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-                  </svg>
                 <button class="seeAll">SeeAll-></button>
             </div>
             <div class="weekly-challenges">
 
                 <div class="activity-container">
                     <div class="wactivity wactivity-one">
+                        <div class="wchallenge-content">Drink 8 cups of water</div>
                         <div class="loader"></div>
-                        <div class="progress">75%</div>
+                        <div class="progress">85%</div>
                     </div>
                 </div>
 
                 <div class="activity-container">
                     <div class="wactivity wactivity-two">
-
+                        <div class="wchallenge-content">Read 30 pages of a book</div>
+                        <div class="loader"></div>
+                        <div class="progress">50%</div>
                     </div>
                 </div>
 
                 <div class="activity-container">
                     <div class="wactivity wactivity-three">
-         
+                        <div class="wchallenge-content"> Try a new activity</div>
+                        <div class="loader"></div>
+                        <div class="progress">20%</div>
                     </div>
                 </div>
 
                 <div class="activity-container">
                     <div class="wactivity wactivity-four">
+                        <div class="wchallenge-content">
+                            Add weekly challenge
+                            <input type="text" placeholder="type here.." class="custom-input" id="custom-week-activity">
+                        </div>
+                        <button class="plus">
+                            <i class="bi bi-plus-lg clickable" id="plus-btn"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                            </svg>
+                        </button>
                         
                     </div>
                 </div>

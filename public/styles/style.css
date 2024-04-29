@@ -58,7 +58,7 @@ body{
     box-sizing: border-box;
     outline: none;
 }
-.notifications, .logout{
+.notifications, .logout, .plus{
     background-color: #fbfafa;
     color: black;
     border: none;
@@ -226,7 +226,6 @@ body{
     grid-area: badges; 
     flex-direction: column;   
 }
-
 .first-badge , .second-badge, .third-badge{
     background-color: white;
     width: auto;
@@ -337,7 +336,7 @@ h2:nth-child(1) {
     background-color: white;
     border-radius: 20px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
-    flex: 1 1 calc(100px); 
+    flex: 1 1 calc(100px);
 }
 .activity-one{
     background-color:#CAF746;
@@ -363,39 +362,6 @@ h2:nth-child(1) {
     width: 70px;
     margin-left: -15px;
     margin-top: -7px;
-}
-.activity-four{
-    background-color: white;
-}
-.custom-input{
-    border: none;
-    margin-bottom: 30px;
-    width: 300px;
-}
-.custom-input:focus{
-    outline: none;
-}
-#input-title{
-    text-align: center;
-    margin-left: 50px;
-    width:200px;
-    border-bottom: solid;
-    border-bottom-width:0.1px ;
-}
-.plus-container{
-    margin-left:280px;
-}
-#daily-plus-btn{
-    cursor: pointer;
-}
-.activity.activity-fourh .back{
-    display: block;
-    background-color: white;
-    background: none;
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: unset;
-    text-align: start;
-    font-size: 20px;
 }
 .activity:hover {
     transform: rotateY(180deg);
@@ -441,19 +407,49 @@ h2:nth-child(1) {
       opacity: 1;
     }
 }
-  @keyframes tracking-in-expand {
+@keyframes tracking-in-expand {
     0% {
-      letter-spacing: -0.5em;
-      opacity: 0;
+        letter-spacing: -0.5em;
+        opacity: 0;
     }
     40% {
-      opacity: 0.6;
+        opacity: 0.6;
     }
     100% {
-      opacity: 1;
+        opacity: 1;
     }
 }
+.activity-four{
+    background-color: white;
+}
+.custom-input{
+    border: none;
+    margin-bottom: 30px;
+    width: 300px;
+}
+.custom-input:focus{
+    outline: none;
+}
+#input-title{
+    text-align: center;
+    margin-left: 50px;
+    width:200px;
+    border-bottom: solid;
+    border-bottom-width:0.1px ;
+}
+.daily-plus-container{
+    margin-left:280px;
+}
 
+.activity.activity-fourh .back{
+    display: block;
+    background-color: white;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    text-align: start;
+    font-size: 20px;
+}
 .Title{ 
     grid-area: Title;
 }
@@ -463,7 +459,7 @@ h2:nth-child(1) {
     background-color: #fbfafa;
 }
 
-/* weekly challenge style */
+/* weekly challenges style */
 .weekly-challenges{
     grid-area: weekly-challenges;
 }
@@ -471,7 +467,7 @@ h2:nth-child(1) {
     /*activity-one, two, three, four, five*/
     display: flex;
     align-items: safe;
-    width: 400px;
+    width: 450px;
     height: 200px;
     position: relative;
     background-color: white;
@@ -479,6 +475,151 @@ h2:nth-child(1) {
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     flex: 1 1 calc(100px); 
 }
+.wchallenge-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 450px;
+    height: 150px;
+    font-size: 30px;
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+                filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+                filter: blur(0px);
+        opacity: 1;
+    }
+}
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+                filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+                filter: blur(0px);
+        opacity: 1;
+    }
+}
+.loader {
+    width: 380px;
+    height: 15px; 
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    border-radius: 20px; 
+    border: 0.1px solid grey;
+}
+.wactivity .progress{
+    position: absolute;
+    height: auto;
+    bottom: 5px;
+    left: 405px;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: white;
+    font-weight: bold;
+}
+.wactivity-one{
+    color: #CAF746;
+    background-color: black;
+}
+.wactivity-one .wchallenge-content{
+    background: linear-gradient(to right, #006400,#CAF746);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.wactivity-one .loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 50px; 
+    background: #CAF746; 
+    animation: animateLoader1 3s forwards;
+}
+.wactivity-one .progress{
+    background-color: black;
+}
+@keyframes animateLoader1 {
+    from {
+        width: 0; 
+    }
+    to {
+        width: 85%;
+    }
+}
+.wactivity-two .loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 50px; 
+    background: #CAF746; 
+    animation: animateLoader2 3s forwards;
+}
+@keyframes animateLoader2 {
+    from {
+        width: 0; 
+    }
+    to {
+        width: 50%;
+    }
+}
+.wactivity-three .loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 50px; 
+    background: #CAF746; 
+    animation: animateLoader3 3s forwards;
+}
+@keyframes animateLoader3 {
+    from {
+        width: 0; 
+    }
+    to {
+        width: 20%;
+    }
+}
+.wactivity-four{
+    background-color: #CAF746;
+}
+.plus{
+    height: 30px;
+    margin-top: 15px;
+    margin-right: 15px;
+    background-color: #CAF746;
+    cursor: pointer;
+}
+.plus:hover{
+    color: white;
+}
+.wactivity-four .wchallenge-content{
+    gap: 30px;
+    height: 240px;
+}
+#custom-week-activity{
+    background-color: #CAF746;
+    text-align: center;
+}
+/* Monthly challenges style */
 .monthly-challenges {
     display: flex; 
     flex-wrap: wrap;
