@@ -37,9 +37,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     grid-area: comment-section1;
-    border-bottom: 7px solid gray; 
+    border-bottom: 7px solid gray;  
 }
+
 .user2-post { 
     display: flex;
     grid-area: user2-post; 
@@ -49,12 +51,13 @@
     border-bottom: 7px solid gray;
     grid-area: comment-section2;
 }
-.comment{
+.comment-btn{
     border: none;
     background-color:#fbfafa;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
     margin-bottom: 10px;
+
 }
 
 .your-profile-pic{
@@ -69,6 +72,51 @@
 .img2, .img1{
     width: 100%; 
 }
+
 p{
     font-size: 20px;
+}
+
+.comment-input {
+    display: none;
+    width: 100%;
+}
+
+.comment-input.show-comment-input {
+    display: flex;
+    margin-top: 10px;
+}
+
+.comment-field , .comment-list{
+    border: none;
+    padding: 5px;
+    width: 100%;
+}
+
+.comment-send-btn {
+    border: none;
+    background-color: #88db02;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+.comment-list {
+    border-top: 1px solid grey;
+    display: none; 
+}
+
+.show-comment-list {
+    display: block; 
+}
+.comment{
+    margin-top: 15px;
+}
+
+.input-field:focus{
+height: 90px;
 }
