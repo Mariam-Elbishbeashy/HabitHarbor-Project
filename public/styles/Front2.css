@@ -1,0 +1,99 @@
+body{
+  background-color: rgb(248,246,246);
+}
+.container {
+  background-color: black;
+  z-index: -1;
+  height: 100vh;
+  border-bottom: 2px solid gray;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 20px;
+}
+.navbar>a{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+a:hover{
+  color: #CAF746;
+}
+
+.navbar > img {
+  height: 100px;
+  width: 100px;
+}
+.navbar>a>img{
+  height: 100px;
+  width: 100px;
+}
+
+.container>.content>img{
+  float: right;
+  margin-top: -200px; 
+  margin-right: 20px; 
+  height: 800px;
+  width: 500px;
+}
+.container>.content>h1{
+  color: white;
+}
+.container>.content>h1{
+  font-family: 'Pacifico', cursive; 
+font-size: 60px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+margin-left: 80px;
+padding-top: 80px;
+}
+.container>.content>h1>a>button{
+  height: 50px;
+  width: 350px;
+  border-radius: 50px;
+margin-top: 30px;
+margin-right: 10px;
+font-size: 25px;
+border-color:#CAF746;
+background-color:#CAF746;
+color: black;
+}
+
+
+.Features>h1{
+  font-family: 'Pacifico', cursive; 
+font-size: 40px;
+text-shadow: 2px 2px 4px #CAF746;
+text-align: center;
+
+}
+p{
+  font-family: 'Pacifico', cursive; 
+  font-size: 30px;
+}
+.Features {
+  text-align: center; 
+}
+
+.features-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 30px; 
+}
+
+.feature {
+  width: 300px; 
+  text-align: center; 
+}
+
+.feature img {
+  width: 100px; 
+  height: 100px; 
+  display: block; 
+  margin: 0 auto 10px; 
+}
+
+
