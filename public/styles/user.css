@@ -197,7 +197,6 @@ body{
     display: block;
   }
   
-  
   .left-panel li:hover {
     background-color: rgba(255, 255, 255, 0.1); 
     transform: scale(1.05); 

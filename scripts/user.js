@@ -52,7 +52,6 @@ function toggleFontWeight(linkId) {
   });
 }
 
-
 window.onload = function() {
   var generalLink = document.getElementById('generalLink');
   generalLink.classList.add('active');
@@ -60,7 +59,6 @@ window.onload = function() {
   generalLink.style.color = '#CAF746'; 
 };
 
-  
   function changeProfile() {
     var fileInput = document.createElement("input");
     fileInput.type = "file";
