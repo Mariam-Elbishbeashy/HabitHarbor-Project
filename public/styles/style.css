@@ -56,7 +56,7 @@ body{
     background-repeat: no-repeat;
     background-position: 95%; /* Position the icon at the right &   center */
     box-sizing: border-box;
-    outline: none; 
+    outline: none;
 }
 .notifications, .logout{
     background-color: #fbfafa;
@@ -321,16 +321,15 @@ h2:nth-child(1) {
     flex-wrap: wrap;
     gap: 20px; 
     grid-area: daily-challenges; 
-    /* height: 80vh; */
 }
-
+/* Daily challenges style */
 .activity-container {
     perspective: 1000px; /* 3D transformations */
 }
 
 .activity {
     /*activity-one, two, three, four, five*/
-    width: 300px;
+    width: 332px;
     height: 200px;
     position: relative;
     transform-style: preserve-3d;
@@ -339,7 +338,64 @@ h2:nth-child(1) {
     border-radius: 20px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     flex: 1 1 calc(100px); 
-    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
+}
+.activity-one{
+    background-color:#CAF746;
+}
+.gif-container{
+    margin-left: 270px;
+    margin-top: 80px;
+}
+#runner{
+    width: 40px;
+}
+.activity-two{
+    background-color: white;
+}
+#food{
+    width: 60px;
+    margin-left: -20px;
+}
+.activity-three{
+    background-color: black;
+}
+#meditation{
+    width: 70px;
+    margin-left: -15px;
+    margin-top: -7px;
+}
+.activity-four{
+    background-color: white;
+}
+.custom-input{
+    border: none;
+    margin-bottom: 30px;
+    width: 300px;
+}
+.custom-input:focus{
+    outline: none;
+}
+#input-title{
+    text-align: center;
+    margin-left: 50px;
+    width:200px;
+    border-bottom: solid;
+    border-bottom-width:0.1px ;
+}
+.plus-container{
+    margin-left:280px;
+}
+#daily-plus-btn{
+    cursor: pointer;
+}
+.activity.activity-fourh .back{
+    display: block;
+    background-color: white;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    text-align: start;
+    font-size: 20px;
 }
 .activity:hover {
     transform: rotateY(180deg);
@@ -351,14 +407,51 @@ h2:nth-child(1) {
     backface-visibility: hidden;
     border-radius: 20px;
     background-color: white;
-    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
+    padding: 15px;
 }
 .activity .front {
     background-color: white;
+    font-size: 30px;
+    -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    background: linear-gradient(to right, #b1ec00, #019201);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
-.activity .back{  
+.activity .back{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
     transform: rotateY(180deg);
+    background: linear-gradient(to right, #006400,#CAF746);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@-webkit-keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
 }
 
 .Title{ 
@@ -370,22 +463,21 @@ h2:nth-child(1) {
     background-color: #fbfafa;
 }
 
-
+/* weekly challenge style */
 .weekly-challenges{
     grid-area: weekly-challenges;
 }
 .wactivity {
     /*activity-one, two, three, four, five*/
+    display: flex;
+    align-items: safe;
     width: 400px;
     height: 200px;
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out; /* for a smooth hovering */
     background-color: white;
     border-radius: 20px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     flex: 1 1 calc(100px); 
-    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%); */
 }
 .monthly-challenges {
     display: flex; 
