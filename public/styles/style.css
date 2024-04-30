@@ -71,7 +71,12 @@ body{
     background-color: #CAF746;
     color: black;
 }
-
+.plus{
+    background-color: white;
+}
+.plus:hover{
+    color: #CAF746;
+}
 /*sidebar style */
 .sidebar {
     height: 90vh;
@@ -518,6 +523,7 @@ h2:nth-child(1) {
     left: 15px;
     border-radius: 20px; 
     border: 0.1px solid grey;
+    overflow: hidden;
 }
 .wactivity .progress{
     position: absolute;
@@ -529,6 +535,28 @@ h2:nth-child(1) {
     background-color: white;
     font-weight: bold;
 }
+.activity-container .loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 50px; 
+    background: #CAF746; 
+    animation: animateLoader 3s forwards;
+}
+.wactivity-one .progress{
+    background-color: black;
+}
+@keyframes animateLoader {
+    from {
+        width: 0; 
+    }
+    to {
+        width: var(--progress-value);
+    }
+}
 .wactivity-one{
     color: #CAF746;
     background-color: black;
@@ -538,77 +566,17 @@ h2:nth-child(1) {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.wactivity-one .loader::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    border-radius: 50px; 
-    background: #CAF746; 
-    animation: animateLoader1 3s forwards;
-}
-.wactivity-one .progress{
-    background-color: black;
-}
-@keyframes animateLoader1 {
-    from {
-        width: 0; 
-    }
-    to {
-        width: 85%;
-    }
-}
-.wactivity-two .loader::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    border-radius: 50px; 
-    background: #CAF746; 
-    animation: animateLoader2 3s forwards;
-}
-@keyframes animateLoader2 {
-    from {
-        width: 0; 
-    }
-    to {
-        width: 50%;
-    }
-}
-.wactivity-three .loader::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    border-radius: 50px; 
-    background: #CAF746; 
-    animation: animateLoader3 3s forwards;
-}
-@keyframes animateLoader3 {
-    from {
-        width: 0; 
-    }
-    to {
-        width: 20%;
-    }
-}
 .wactivity-four{
     background-color: #CAF746;
 }
-.plus{
+.wactivity-four .plus{
     height: 30px;
     margin-top: 15px;
     margin-right: 15px;
     background-color: #CAF746;
     cursor: pointer;
 }
-.plus:hover{
+.wactivity-four .plus:hover{
     color: white;
 }
 .wactivity-four .wchallenge-content{
@@ -616,8 +584,12 @@ h2:nth-child(1) {
     height: 240px;
 }
 #custom-week-activity{
+    
     background-color: #CAF746;
     text-align: center;
+}
+#custom-week-activity::placeholder{
+    font-size: 25px;
 }
 /* Monthly challenges style */
 .monthly-challenges {

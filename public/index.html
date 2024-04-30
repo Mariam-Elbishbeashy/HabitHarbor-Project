@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-    <script src="../scripts/index.js"></script>
 </head>
 <body>
     <div class="container">
@@ -226,7 +225,7 @@
                                 </button>
                             </div>
                             <input type="text" placeholder="Type a title here ..." class="custom-input" id="input-title">
-                            <input type="text" placeholder="type the challenge here ..." class="custom-input" id="input-content">
+                            <textarea placeholder="type the challenge here ..." class="custom-input" id="input-content"></textarea>
                         </div>
                     </div>
                 </div>
@@ -238,7 +237,7 @@
             <div class="weekly-challenges">
 
                 <div class="activity-container">
-                    <div class="wactivity wactivity-one">
+                    <div class="wactivity wactivity-one" style="--progress-value: 85%;">
                         <div class="wchallenge-content">Drink 8 cups of water</div>
                         <div class="loader"></div>
                         <div class="progress">85%</div>
@@ -246,7 +245,7 @@
                 </div>
 
                 <div class="activity-container">
-                    <div class="wactivity wactivity-two">
+                    <div class="wactivity wactivity-two" style="--progress-value: 50%;">
                         <div class="wchallenge-content">Read 30 pages of a book</div>
                         <div class="loader"></div>
                         <div class="progress">50%</div>
@@ -254,7 +253,7 @@
                 </div>
 
                 <div class="activity-container">
-                    <div class="wactivity wactivity-three">
+                    <div class="wactivity wactivity-three" style="--progress-value: 20%;">
                         <div class="wchallenge-content"> Try a new activity</div>
                         <div class="loader"></div>
                         <div class="progress">20%</div>
@@ -265,7 +264,8 @@
                     <div class="wactivity wactivity-four">
                         <div class="wchallenge-content">
                             Add weekly challenge
-                            <input type="text" placeholder="type here.." class="custom-input" id="custom-week-activity">
+                            <textarea placeholder="type here.." class="custom-input" id="custom-week-activity"></textarea>
+                               
                         </div>
                         <button class="plus">
                             <i class="bi bi-plus-lg clickable" id="plus-btn"></i>
@@ -302,5 +302,6 @@
         </div>
         <div class="footer"></div>
     </div>
+    <script src="../scripts/index.js"></script>
 </body>
 </html>
