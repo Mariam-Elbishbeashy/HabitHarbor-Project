@@ -89,39 +89,41 @@
                    
             </div> 
         </div>
+        
         <!--User Profile-->
         <div class = "card">
             <div class="left-panel">
               <ul>
                 <li><a href="#" id="generalLink" class="active" onclick="toggleFontWeight('generalLink'); toggleOption('general')">General</a></li>
             <li><a href="#" id="infoLink" onclick="toggleFontWeight('infoLink'); toggleOption('info');">Info</a></li>
+            <li><a href="#" id="healthInfoLink" onclick="toggleFontWeight('healthInfoLink'); toggleOption('healthInfo');">Health Info</a></li>
             <li><a href="#" id="passwordLink" onclick="toggleFontWeight('passwordLink'); toggleOption('password');">Change Password</a></li>
               </ul>
             </div>
             <div id="generalContent" class="content">
-              <div class="profile-section">
+              <div class="info-section">
                 <img src="images/download.jpg" alt="Profile Picture" id="profilePic">
                 <button onclick="changeProfile()">Change Profile</button>
               </div>
               <div class="info-section">
-                <div class="name-fields">
-                  <div class="name-field">
+                <div class="general">
+                  <div class="general-section">
                     <label for="firstName">First Name:</label>
                     <input type="text" id="firstName" value="Sondos" readonly>
                   </div>
-                  <div class="name-field">
+                  <div class="general-section">
                     <label for="lastName">Last Name:</label>
                     <input type="text" id="lastName" value="Mohamed" readonly>
                   </div>
                 </div>
-                <div class="name-fields">
-                  <div class="name-field">
+                <div class="general">
+                  <div class="general-section">
                     <label for="username">Username:</label>
                     <input type="text" id="username" value="sondos123" readonly>
                   </div>
                 </div>
-                <div class="name-fields">
-                  <div class="name-field">
+                <div class="general">
+                  <div class="general-section">
                     <label for="email">Email:</label>
                     <input type="email" id="email" value="sondos@gmail.com" readonly>
                   </div>
@@ -129,24 +131,66 @@
               </div>
             </div>
               <div id="infoContent" class="content" style="display: none;">
-        <!-- Info content here -->
-        <div class="profile-section">
+        <div class="info-section">
             <label for="age">Age:</label>
             <input type="text" id="age" value="25" readonly>
         </div>
-        <div class="profile-section">
+        <div class="info-section">
             <label for="height">Height:</label>
             <input type="text" id="height" value="170cm" readonly>
         </div>
-        <div class="profile-section">
+        <div class="info-section">
             <label for="weight">Weight:</label>
             <input type="text" id="weight" value="65kg" readonly>
         </div>
-        <div class="profile-section">
-            <label for="healthIssues">Health Issues:</label>
-            <textarea id="health-issues" name="health-issues" rows="6" cols="50" readonly>High blood pressure</textarea>
+        <div class="info-section">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" value="+20 1123456789" readonly>
         </div>
     </div>
+    <div id="healthInfoContent" class="content" style="display: none;">
+        <div class="info-section">
+            <label for="healthIssues">Health Issues:</label>
+            <textarea id="health-issues" name="health-issues" rows="3" cols="50" readonly>High blood pressure</textarea>
+        </div>
+        <div class="info2-section">
+            <label for="habits-goals">Health Goals:</label>
+        </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="goal1" name="goal1" class="checkbox-custom">
+                <label class="checkbox-label" for="goal1">Weight Loss</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="goal2" name="goal2" class="checkbox-custom">
+                <label class="checkbox-label" for="goal2">Healthy Eating</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="goal3" name="goal3" class="checkbox-custom">
+                <label class="checkbox-label" for="goal3">Hydration Goals</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="goal4" name="goal4" class="checkbox-custom">
+                <label class="checkbox-label" for="goal4">Healthy Sleep Patterns</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="goal5" name="goal5" class="checkbox-custom" onchange="toggleOtherTextArea()">
+                <label class="checkbox-label" for="goal5">Other</label>
+            </div>
+            
+            <div class="info-section" id="otherGoalTextArea" style="display: none;">
+                <label for="otherGoal">Other Goal:</label>
+                <textarea id="otherGoal" name="otherGoal" rows="2" cols="50" placeholder="Write here"></textarea>
+            </div>
+           
+            <div class="info-section custom-info">
+                <p>Please check the boxes for the health goals needed and click "Save Changes" to ensure they are saved.</p>
+              </div>
+
+              <div class="info-section">
+                <button onclick="saveHealthInfoChanges()">Save Changes</button>
+            </div> 
+    </div>
+    
     <div id="passwordContent" class="content" style="display: none;">
         <p>password</p>
     </div>
@@ -154,8 +198,18 @@
             <div class="top-box smaller-box"></div>
           </div>
     </div>
-          
-            <script src="C:\Users\DR ghada\HabitHarbor-Project\scripts\user.js"></script>
+
+    <!--modal-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Changes saved successfully!</p>
+          <button id="closeModalBtn">Close</button>
+        </div>
+      </div>
+      
+        <script src="C:\Users\DR ghada\HabitHarbor-Project\scripts\user.js"></script>
+
 </body>
 </html>
    
