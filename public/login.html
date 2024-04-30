@@ -8,20 +8,27 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<form>
+<form action="index.html" onsubmit="return validateForm()">
     <h3>Login Here</h3>
 
     <label for="username">Username</label>
-    <input type="text" placeholder="Email or Phone" id="username">
+    <input type="text" placeholder="Email or Phone" id="username" >
 
     <label for="password">Password</label>
     <input type="password" placeholder="Password" id="password">
 
     <button >Log In</a></button>
+    <br>
+    <div class="member">
+       <p>Not a member yet?</p>
+    <a href="Signup.html">Sign up now!</a>
+    </div>
+   
     <div class="social">
       <div class="go"><i class="fab fa-google"></i>  Google</div>
       <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
     </div>
 </form>
+<script src="../scripts/front.js"></script>
 </body>
 </html>

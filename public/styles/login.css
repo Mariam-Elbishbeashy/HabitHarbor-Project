@@ -83,3 +83,11 @@ margin-left: 40px;
 .social i{
 margin-right: 4px;
 }
+
+.member{
+  display: flex;
+  gap: 10px;
+}
+.member>a{
+  padding-top: 15px;
+}
