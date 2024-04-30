@@ -30,8 +30,7 @@ body{
     font-family: "Playfair Display", serif;
     color: black;
     font-weight: 400;
-    border-bottom: 0.1px solid #000;
-
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.10);
 }
 .website-name{
     text-shadow: 2px 2px 5px grey;
@@ -91,9 +90,10 @@ body{
       "badges"; 
     grid-area: sidebar; 
     border-radius: 10px;
-    border-left: 0.1px solid #000;
+    /* border-left: 0.1px solid #000;
     border-top-left-radius: 0px ;
-    border-bottom-left-radius:0px;   
+    border-bottom-left-radius:0px;    */
+    box-shadow: -5px -5px 10px rgba(0,0,0,0.10);
 }
 
 /*profile style */
@@ -246,6 +246,7 @@ body{
     grid-area: navbar;
     background-color: black;
     border-radius: 25px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.414);
 }
 
 #logo{
@@ -333,7 +334,7 @@ h2:nth-child(1) {
 
 .activity {
     /*activity-one, two, three, four, five*/
-    width: 332px;
+    width: 326px;
     height: 200px;
     position: relative;
     transform-style: preserve-3d;
@@ -358,14 +359,14 @@ h2:nth-child(1) {
 }
 #food{
     width: 60px;
-    margin-left: -20px;
+    margin-left: -24px;
 }
 .activity-three{
     background-color: black;
 }
 #meditation{
     width: 70px;
-    margin-left: -15px;
+    margin-left: -25px;
     margin-top: -7px;
 }
 .activity:hover {
@@ -461,7 +462,7 @@ h2:nth-child(1) {
 
 .seeAll{
     border: none;
-    background-color: #fbfafa;
+    background-color: rgb(248, 246, 246)
 }
 
 /* weekly challenges style */
@@ -471,6 +472,7 @@ h2:nth-child(1) {
 .wactivity {
     /*activity-one, two, three, four, five*/
     display: flex;
+    flex-direction: column;
     align-items: safe;
     width: 450px;
     height: 200px;
@@ -490,6 +492,10 @@ h2:nth-child(1) {
     font-size: 30px;
     -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
     animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    background: linear-gradient(to right, #006400,#CAF746);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
 }
 @-webkit-keyframes text-focus-in {
     0% {
@@ -517,7 +523,7 @@ h2:nth-child(1) {
 }
 .loader {
     width: 380px;
-    height: 15px; 
+    height: 10px; 
     position: absolute;
     bottom: 10px;
     left: 15px;
@@ -543,7 +549,7 @@ h2:nth-child(1) {
     width: 0;
     height: 100%;
     border-radius: 50px; 
-    background: #CAF746; 
+    background: linear-gradient(120deg, #CAF746 0%, #96e6a1 100%);
     animation: animateLoader 3s forwards;
 }
 .wactivity-one .progress{
@@ -566,15 +572,24 @@ h2:nth-child(1) {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.wactivity-three .loader,.wactivity-three .loader::before,.wactivity-three .progress{
+    visibility: hidden;
+}
 .wactivity-four{
     background-color: #CAF746;
 }
+.wactivity-four .wchallenge-content{
+    background-color:#CAF746;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
 .wactivity-four .plus{
     height: 30px;
-    margin-top: 15px;
-    margin-right: 15px;
+    width: 30px;
+    margin-top: -225px;
+    margin-left: 400px;
     background-color: #CAF746;
-    cursor: pointer;
 }
 .wactivity-four .plus:hover{
     color: white;
@@ -583,12 +598,11 @@ h2:nth-child(1) {
     gap: 30px;
     height: 240px;
 }
-#custom-week-activity{
-    
+#custom-activity{
     background-color: #CAF746;
     text-align: center;
 }
-#custom-week-activity::placeholder{
+#custom-activity::placeholder{
     font-size: 25px;
 }
 /* Monthly challenges style */
@@ -596,21 +610,92 @@ h2:nth-child(1) {
     display: flex; 
     flex-wrap: wrap;
     gap: 20px; 
-    grid-area: monthly-challenges; 
-    /* height: 80vh; */
+    grid-area: monthly-challenges;
 }
 .mactivity {
     /*activity1, 2, and 3 */
-    width: 500px;
+    display: flex;
+    align-items: safe;
+    width: 499px;
     height: 200px;
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out; /* for a smooth hovering */
     background-color: white;
     border-radius: 20px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     flex: 1 1 calc(100px); 
-    /* background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(208, 211, 214) 100.2%); */
+}
+.mchallenge-content{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    height: 150px; 
+    font-size: 30px;
+    background: linear-gradient(to right, #006400,#CAF746);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+                filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+                filter: blur(0px);
+        opacity: 1;
+    }
+}
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+                filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+                filter: blur(0px);
+        opacity: 1;
+    }
+}
+.mactivity .progress{
+    position: absolute;
+    height: auto;
+    bottom: 5px;
+    left: 450px;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: white;
+    font-weight: bold;
+}
+.mactivity .loader {
+    width: 430px;
+}
+.activity2{
+    background-color: black;
+}
+.activity2 .progress{
+    color: #CAF746;
+    background-color: black;
+}
+.activity3 .plus{
+    height: 30px;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+.activity3 .mchallenge-content{
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    gap: 30px;
+    height: 240px;
+}
+.mchallenge-content #custom-activity{
+    background-color: white;
 }
 
 .footer {

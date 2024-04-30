@@ -209,7 +209,7 @@
                         <div class="front">Well-being challenge
                             <div class="gif-container"><img src="./images/meditation.gif" id="meditation"></div>
                         </div>
-                        <div class="back">Medidate for 20 minutes</div>
+                        <div class="back">Meditate for 20 minutes</div>
                     </div>
                 </div>
                 <div class="activity-container">
@@ -264,8 +264,7 @@
                     <div class="wactivity wactivity-four">
                         <div class="wchallenge-content">
                             Add weekly challenge
-                            <textarea placeholder="type here.." class="custom-input" id="custom-week-activity"></textarea>
-                               
+                            <textarea placeholder="type here.." class="custom-input" id="custom-activity"></textarea>        
                         </div>
                         <button class="plus">
                             <i class="bi bi-plus-lg clickable" id="plus-btn"></i>
@@ -279,24 +278,40 @@
             </div>
             <div class="Title">
                 <h2>Monthly Challenges</h2>
-                <i class="bi bi-plus-lg clickable" id="plus-btn"></i>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-                  </svg>
                 <button class="seeAll">SeeAll-></button>
             </div>
             <div class="monthly-challenges">
 
                 <div class="activity-container">
-                    <div class="mactivity activity1"></div>
+                    <div class="mactivity activity1" style="--progress-value: 90%;">
+                        <div class="mchallenge-content"> Start your day with a healthy breakfast</div>
+                        <div class="loader"></div>
+                        <div class="progress">90%</div>
+                    </div>
                 </div>
 
                 <div class="activity-container">
-                    <div class="mactivity activity2"></div>
+                    <div class="mactivity activity2">
+                        <div class="mactivity activity2" style="--progress-value: 10%;">
+                            <div class="mchallenge-content"> Write down 5 things you're thankful for </div>
+                            <div class="loader"></div>
+                            <div class="progress">10%</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="activity-container">
-                    <div class="mactivity activity3"></div>
+                    <div class="mactivity activity3">
+                        <div class="mchallenge-content">
+                            Add weekly challenge
+                            <textarea placeholder="type here.." class="custom-input" id="custom-activity"></textarea>
+                        </div>
+                    <button class="plus">
+                        <i class="bi bi-plus-lg clickable" id="plus-btn"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
