@@ -1,0 +1,125 @@
+.container{
+    gap: 20px 15px;
+}
+.main {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 0.2fr 3.4fr 0.4fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "community-header"
+      "community-chatbox"
+      "community-chatbar";
+    grid-template-areas: 
+    "community-header"
+    "community-chatbox"
+    "community-chatbar"; 
+    grid-area: main; 
+}
+.community-header { 
+    grid-area: community-header;
+ }
+.group-title{
+    text-shadow: 2px 2px 9px grey;
+    font-weight: 600;
+}
+.community-chatbar { 
+    grid-area: community-chatbar; 
+}
+.community-chatbox { 
+    background-image: url("../images/community-background.jpg");
+    border-radius: 10px;
+    grid-area: community-chatbox; 
+}
+
+/* Styling the input field */
+.input-group {
+    border-radius: 20px;
+    width: auto;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-control {
+    border: none !important;
+    border-radius: 20px !important;
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.input-group-text {
+    background: transparent !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: b;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/*chat */
+.bubbleWrapper {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-self: flex-end;
+    color: #fff;
+  }
+  .inlineContainer {
+    display: inline-flex;
+  }
+  .inlineContainer.own {
+    flex-direction: row-reverse;
+  }
+  .inlineIcon {
+    width:20px;
+    object-fit: contain;
+  }
+  .ownBubble {
+    min-width: 60px;
+    max-width: 700px;
+    padding: 14px 18px;
+    margin: 6px 8px;
+    background-color: #5f9a00;
+    border-radius: 16px 16px 0 16px;
+    border: 1px solid #5f9a00;
+   
+  }
+  .otherBubble {
+    min-width: 60px;
+    max-width: 700px;
+    padding: 14px 18px;
+    margin: 6px 8px;
+    background-color: black;
+    border-radius: 16px 16px 16px 0;
+    border: 1px solid black;
+    
+  }
+  .own {
+    align-self: flex-end;
+  }
+  .other {
+    align-self: flex-start;
+  }
+  span.own,
+  span.other{
+    font-size: 14px;
+    color: grey;
+  }
+
+  
