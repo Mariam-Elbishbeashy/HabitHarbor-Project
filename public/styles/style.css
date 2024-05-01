@@ -568,7 +568,7 @@ h2:nth-child(1) {
     align-items: center;
     flex-direction: column;
     width: 450px;
-    height: 150px;
+    height: 145px;
     font-size: 30px;
     -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
     animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
@@ -601,12 +601,8 @@ h2:nth-child(1) {
         opacity: 1;
     }
 }
-#completion-btn{
-   margin-bottom: 30px;
-}
 .activity-btn{
     margin-left: 180px;
-    margin-top: 100px;
     width: 84px;
     border-radius: 42px;
     background: linear-gradient(120deg, #CAF746 0%, #96e6a1 100%);
@@ -731,7 +727,7 @@ h2:nth-child(1) {
     align-items: center;
     flex-direction: column;
     width: 500px;
-    height: 100px; 
+    height: 145px; 
     font-size: 30px;
     background: linear-gradient(to right, #006400,#CAF746);
     -webkit-background-clip: text;
