@@ -185,7 +185,7 @@ body{
 .datepicker-calendar {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-row-gap: 1rem;
+	grid-row-gap: 0.5rem;
 }
 
 .day, .date {
@@ -198,7 +198,7 @@ body{
 
 .date {	
 	width: 2rem;
-	height: 1rem;
+	height: 1.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -209,6 +209,20 @@ body{
 }
 .faded{
     opacity: 0.6;
+}
+.selected {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+}
+.today {
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
 }
 
 /*badges styles */

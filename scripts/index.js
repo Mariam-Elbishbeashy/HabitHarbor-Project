@@ -55,3 +55,82 @@ function weeklyMonthlyValidate(){
         alert("The challenge content can not be ampty")
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const prevMonthBtn = document.querySelector(".arrow:first-child");
+    const nextMonthBtn = document.querySelector(".arrow:last-child");
+    const monthNameElement = document.querySelector(".month-name");
+    const currentDate = new Date();
+    let selectedDate;
+
+    // Function to render the calendar
+    function renderCalendar(month, year) {
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+        const daysInMonth = lastDayOfMonth.getDate();
+        const firstDayOfWeek = firstDayOfMonth.getDay();
+
+        const calendarDays = document.querySelectorAll('.date');
+        let dayCounter = 1;
+
+        calendarDays.forEach((day, index) => {
+            if (index >= firstDayOfWeek && dayCounter <= daysInMonth) {
+                day.textContent = dayCounter;
+                dayCounter++;
+                day.classList.remove('faded');
+            } else {
+                day.textContent = '';
+                day.classList.add('faded');
+            }
+
+            // Mark today's date
+            if (currentDate.getDate() === parseInt(day.textContent) && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+                day.classList.add('today');
+            } else {
+                day.classList.remove('today');
+            }
+
+            // Mark selected date
+            if (selectedDate && selectedDate.getDate() === parseInt(day.textContent) && month === selectedDate.getMonth() && year === selectedDate.getFullYear()) {
+                day.classList.add('selected');
+            } else {
+                day.classList.remove('selected');
+            }
+        });
+
+        // Update month and year display
+        monthNameElement.textContent = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
+    }
+
+    // Initial render
+    renderCalendar(currentDate.getMonth(), currentDate.getFullYear());
+
+    // Event listeners for navigating months
+    prevMonthBtn.addEventListener("click", function() {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate.getMonth(), currentDate.getFullYear());
+    });
+
+    nextMonthBtn.addEventListener("click", function() {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate.getMonth(), currentDate.getFullYear());
+    });
+
+    // Event listener for selecting a date
+    document.querySelectorAll('.date').forEach(function(day) {
+        day.addEventListener('click', function() {
+            const selectedDay = parseInt(day.textContent);
+            selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), selectedDay);
+            renderCalendar(currentDate.getMonth(), currentDate.getFullYear());
+        });
+    });
+
+    // Event listener for "Let's Go" button
+    document.getElementById('start-btn').addEventListener('click', function() {
+        document.querySelectorAll('.date').forEach(function(day) {
+            day.style.borderColor = '';
+        });
+
+        document.querySelector('.today').style.borderColor = 'black';
+    });
+});
