@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" href="styles/user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -94,12 +95,15 @@
         <div class = "card">
             <div class="left-panel">
               <ul>
-                <li><a href="#" id="generalLink" class="active" onclick="toggleFontWeight('generalLink'); toggleOption('general')">General</a></li>
+            <li><a href="#" id="generalLink" class="active" onclick="toggleFontWeight('generalLink'); toggleOption('general')">General</a></li>
             <li><a href="#" id="infoLink" onclick="toggleFontWeight('infoLink'); toggleOption('info');">Info</a></li>
             <li><a href="#" id="healthInfoLink" onclick="toggleFontWeight('healthInfoLink'); toggleOption('healthInfo');">Health Info</a></li>
             <li><a href="#" id="passwordLink" onclick="toggleFontWeight('passwordLink'); toggleOption('password');">Change Password</a></li>
+            <li><a href="#" id="feedbackLink" onclick="toggleFontWeight('feedbackLink'); toggleOption('feedback');">Feedback</a></li>
               </ul>
             </div>
+
+            <!--general-->
             <div id="generalContent" class="content">
               <div class="info-section">
                 <img src="images/download.jpg" alt="Profile Picture" id="profilePic">
@@ -130,6 +134,8 @@
                 </div>
               </div>
             </div>
+
+            <!--info-->
               <div id="infoContent" class="content" style="display: none;">
         <div class="info-section">
             <label for="age">Age:</label>
@@ -148,6 +154,8 @@
             <input type="text" id="phoneNumber" value="+20 1123456789" readonly>
         </div>
     </div>
+
+    <!--health info-->
     <div id="healthInfoContent" class="content" style="display: none;">
         <div class="info-section">
             <label for="healthIssues">Health Issues:</label>
@@ -191,24 +199,66 @@
             </div> 
     </div>
     
+    <!--password-->
     <div id="passwordContent" class="content" style="display: none;">
         <p>password</p>
     </div>
-            <div class="top-box bigger-box"></div>
-            <div class="top-box smaller-box"></div>
-          </div>
+
+    <!--feedback-->
+    <div id="feedbackContent" class="content" style="display: none;">
+        <div class ="feedback-section">
+            <h2 class="rate-title">Rate Us!</h2>
+            <div class="emoji">
+                <div id="emojis">
+                <img src="images/poor.png">
+                <img src="images/bad.png">
+                <img src="images/okay.png">
+                <img src="images/good.png">
+                <img src="images/excellent.png">
+            </div>
+            </div>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="feedback-textarea">
+                <label for="detailedFeedback"><b>Detailed Feedback:</b></label>
+                <textarea id="detailedFeedback" name="detailedFeedback" rows="4" cols="50" placeholder="Enter detailed feedback here..."></textarea>
+            </div>
+           <button id="submitBtn" onclick="displayFeedbackModal()">Submit</button>
+           <div id="feedbackSubmitButton" style="display: none;">
+            <button onclick="changeRatingButton()">Change rating</button>
     </div>
+    </div>
+    
+    </div>
+    <div class="top-box bigger-box"></div>
+    <div class="top-box smaller-box"></div>
+
+  </div>
 
     <!--modal-->
-    <div id="myModal" class="modal">
+    <div id="saveChanges-modal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
           <p>Changes saved successfully!</p>
           <button id="closeModalBtn">Close</button>
         </div>
       </div>
+
+      <!--feedback modal-->
+      <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Thank you for your feedback!</p>
+            <button id="closeFeedbackModalBtn">Close</button>
+        </div>
+    </div>
       
         <script src="C:\Users\DR ghada\HabitHarbor-Project\scripts\user.js"></script>
-
+        
 </body>
 </html>
