@@ -349,7 +349,12 @@ h2:nth-child(1) {
 }
 /* checkbox and trash button style */
 .checkbox-wrapper {
-    display: flex;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: flex-start;
+    margin-top:15px;
 }
 .checkbox-wrapper .round {
     position: relative;
@@ -393,7 +398,12 @@ h2:nth-child(1) {
 }
 
 .trash-btn{
-    margin-right: 10px; 
+    width: 30px;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: flex-start;
     background: transparent;
     border: none;
     color: #006400;
@@ -453,11 +463,14 @@ h2:nth-child(1) {
     -webkit-text-fill-color: transparent;
 }
 .activity .back{
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    justify-content: center; /* Center the elements horizontally */
-    align-items: center; /* Align elements vertically */
-    padding: 10px;
+    width: 326px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: stretch;
     font-size: 30px;
     transform: rotateY(180deg);
     background: linear-gradient(to right, #006400, #CAF746);
@@ -465,8 +478,8 @@ h2:nth-child(1) {
     -webkit-text-fill-color: transparent;
 }
 .activity .back .description {
-    text-align: center; 
-    margin: 0; 
+    flex: 0 0 200px;
+    align-self: center;
 }
 @-webkit-keyframes tracking-in-expand {
     0% {
@@ -588,8 +601,12 @@ h2:nth-child(1) {
         opacity: 1;
     }
 }
-.start-btn{
+#completion-btn{
+   margin-bottom: 30px;
+}
+.activity-btn{
     margin-left: 180px;
+    margin-top: 100px;
     width: 84px;
     border-radius: 42px;
     background: linear-gradient(120deg, #CAF746 0%, #96e6a1 100%);
@@ -598,7 +615,7 @@ h2:nth-child(1) {
     transition: all 0.3s ease-in-out; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.start-btn:hover{
+.activity-btn:hover{
     background: linear-gradient(120deg, #96e6a1 0%, #CAF746 100%);
     transform: scale(1.05); 
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
@@ -654,7 +671,7 @@ h2:nth-child(1) {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.wactivity-three .loader,.wactivity-three .loader::before,.wactivity-three .progress{
+.wactivity-three .loader,.wactivity-three .loader::before,.wactivity-three .progress,.wactivity-three #completion-btn{
     visibility: hidden;
 }
 .wactivity-four{
@@ -714,7 +731,7 @@ h2:nth-child(1) {
     align-items: center;
     flex-direction: column;
     width: 500px;
-    height: 150px; 
+    height: 100px; 
     font-size: 30px;
     background: linear-gradient(to right, #006400,#CAF746);
     -webkit-background-clip: text;
@@ -766,11 +783,11 @@ h2:nth-child(1) {
     color: #CAF746;
     background-color: black;
 }
-.activity2 .loader,.activity2 .loader::before,.activity2 .progress{
+.activity2 .loader,.activity2 .loader::before,.activity2 .progress, .activity2 #completion-btn{
     visibility: hidden;
 }
-.activity2 .start-btn{
-    margin-left:220px ;
+.mactivity .activity-btn{
+   margin-left:215px ;  
 }
 .activity3 .mchallenge-content{
     background: none;
