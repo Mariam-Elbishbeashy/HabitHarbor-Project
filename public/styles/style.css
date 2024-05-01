@@ -72,10 +72,13 @@ body{
 }
 .plus{
     background-color: white;
+    transition: color 1s;
+    cursor: pointer;
 }
 .plus:hover{
     color: #CAF746;
 }
+
 /*sidebar style */
 .sidebar {
     height: 90vh;
@@ -344,6 +347,65 @@ h2:nth-child(1) {
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     flex: 1 1 calc(100px);
 }
+/* checkbox and trash button style */
+.checkbox-wrapper {
+    display: flex;
+}
+.checkbox-wrapper .round {
+    position: relative;
+}
+
+.checkbox-wrapper .round label {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    display: block;
+}
+.checkbox-wrapper .round label:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 3px;
+    left: 4px;
+    opacity: 0;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45deg);
+    width: 12px;
+}
+.checkbox-wrapper .round input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+}
+
+.checkbox-wrapper .round input[type="checkbox"]:checked + label {
+    background-color: #CAF746;
+    border-color: #CAF746;
+}
+
+.checkbox-wrapper .round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+}
+
+.trash-btn{
+    margin-right: 10px; 
+    background: transparent;
+    border: none;
+    color: #006400;
+    border-radius: 50px;
+    transition: background-color 0.6s;
+}
+.trash-btn:hover{
+    background-color: gray;
+}
+.trash-btn:active{
+    box-shadow: 5px 5px 10px rgba(87, 84, 84, 0.7);
+}
 .activity-one{
     background-color:#CAF746;
 }
@@ -391,15 +453,20 @@ h2:nth-child(1) {
     -webkit-text-fill-color: transparent;
 }
 .activity .back{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    justify-content: center; /* Center the elements horizontally */
+    align-items: center; /* Align elements vertically */
+    padding: 10px;
     font-size: 30px;
     transform: rotateY(180deg);
-    background: linear-gradient(to right, #006400,#CAF746);
+    background: linear-gradient(to right, #006400, #CAF746);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.activity .back .description {
+    text-align: center; 
+    margin: 0; 
 }
 @-webkit-keyframes tracking-in-expand {
     0% {
@@ -521,6 +588,21 @@ h2:nth-child(1) {
         opacity: 1;
     }
 }
+.start-btn{
+    margin-left: 180px;
+    width: 84px;
+    border-radius: 42px;
+    background: linear-gradient(120deg, #CAF746 0%, #96e6a1 100%);
+    border: none;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.start-btn:hover{
+    background: linear-gradient(120deg, #96e6a1 0%, #CAF746 100%);
+    transform: scale(1.05); 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
 .loader {
     width: 380px;
     height: 10px; 
@@ -590,6 +672,7 @@ h2:nth-child(1) {
     margin-top: -225px;
     margin-left: 400px;
     background-color: #CAF746;
+    z-index: 1;
 }
 .wactivity-four .plus:hover{
     color: white;
@@ -615,6 +698,7 @@ h2:nth-child(1) {
 .mactivity {
     /*activity1, 2, and 3 */
     display: flex;
+    flex-direction: column;
     align-items: safe;
     width: 499px;
     height: 200px;
@@ -682,10 +766,11 @@ h2:nth-child(1) {
     color: #CAF746;
     background-color: black;
 }
-.activity3 .plus{
-    height: 30px;
-    margin-top: 15px;
-    margin-right: 15px;
+.activity2 .loader,.activity2 .loader::before,.activity2 .progress{
+    visibility: hidden;
+}
+.activity2 .start-btn{
+    margin-left:220px ;
 }
 .activity3 .mchallenge-content{
     background: none;
@@ -693,6 +778,13 @@ h2:nth-child(1) {
     -webkit-text-fill-color: unset;
     gap: 30px;
     height: 240px;
+}
+.activity3 .plus{
+    height: 30px;
+    width: 30px;
+    margin-top: -225px; 
+    margin-left: 450px;
+    z-index: 1;
 }
 .mchallenge-content #custom-activity{
     background-color: white;
