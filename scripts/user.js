@@ -1,6 +1,17 @@
 // Sondos
 //user.js
 
+window.onload = function() {
+  var generalLink = document.getElementById('generalLink');
+  generalLink.classList.add('active');
+  generalLink.style.fontWeight = 'bold';
+  generalLink.style.color = '#CAF746'; 
+  toggleFontWeight('generalLink');
+  starRating(); 
+  
+};
+
+//left panel 
 function toggleOption(optionName) {
   var generalContent = document.getElementById("generalContent");
   var infoContent = document.getElementById("infoContent");
@@ -49,7 +60,6 @@ function toggleOption(optionName) {
   }
 }
 
-
 function toggleFontWeight(linkId) {
   var links = document.querySelectorAll('.left-panel a'); 
   links.forEach(function(link) {
@@ -65,16 +75,7 @@ function toggleFontWeight(linkId) {
   });
 }
 
-window.onload = function() {
-  var generalLink = document.getElementById('generalLink');
-  generalLink.classList.add('active');
-  generalLink.style.fontWeight = 'bold';
-  generalLink.style.color = '#CAF746'; 
-  toggleFontWeight('generalLink');
-  starRating(); 
-  
-};
-
+//general section: profile picture
   function changeProfile() {
     var fileInput = document.createElement("input");
     fileInput.type = "file";
@@ -93,6 +94,7 @@ window.onload = function() {
     fileInput.click();
   }
  
+  //health info
   function toggleOtherTextArea() {
     var otherCheckbox = document.getElementById("goal5");
     var otherTextArea = document.getElementById("otherGoalTextArea");
@@ -144,6 +146,7 @@ function saveHealthInfoChanges() {
   }
 }
 
+//feedback
 function starRating() {
   var stars = document.getElementsByClassName("fas");
   var emoji = document.getElementById("emojis");
@@ -174,7 +177,7 @@ function displayFeedbackModal() {
         stars[i].style.pointerEvents = "none";
     }
 
-    document.getElementById("detailedFeedback").disabled = true;
+    document.getElementById("feedback").disabled = true;
 }
 
 function closeFeedbackModal() {
@@ -204,9 +207,108 @@ function changeRatingButton() {
       stars[i].style.color = "#e4e4e4"; 
   }
 
-  // Clear the content of the detailed feedback text area
-  document.getElementById("detailedFeedback").value = "";
+  document.getElementById("feedback").value = "";
 
-  document.getElementById("detailedFeedback").disabled = false;
+  document.getElementById("feedback").disabled = false;
 }
 
+//edit general info
+function editGeneralInfo() {
+  var modal = document.getElementById("editModal");
+  modal.style.display = "block";
+
+  document.getElementById("editFirstName").value = "";
+  document.getElementById("editLastName").value = "";
+  document.getElementById("editUsername").value = "";
+  document.getElementById("editEmail").value = "";
+}
+
+function closeEditModal() {
+  var modal = document.getElementById("editModal");
+  modal.style.display = "none";
+  
+  document.getElementById("firstNameError").innerHTML = "";
+  document.getElementById("lastNameError").innerHTML = "";
+  document.getElementById("usernameError").innerHTML = "";
+  document.getElementById("emailError").innerHTML = "";
+}
+
+document.getElementById("editButton").addEventListener("click", editGeneralInfo);
+
+document.getElementsByClassName("close")[1].addEventListener("click", closeEditModal);
+
+function printError(elemId, hintMsg) {
+  document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+function validateForm(form) {
+  var firstName = form.elements["editFirstName"].value.trim();
+  var lastName = form.elements["editLastName"].value.trim();
+  var username = form.elements["editUsername"].value.trim();
+  var email = form.elements["editEmail"].value.trim();
+
+  var nameRegex = /^[a-zA-Z]+$/;
+  var usernameRegex = /^[a-zA-Z0-9_]+$/;
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  var isValid = true;
+  var errorMessage = "";
+
+  if (firstName === "") {
+    printError("firstNameError", "Please enter your first name");
+    isValid = false;
+  } else if (!firstName.match(nameRegex)) {
+    printError("firstNameError", "Please enter a valid first name");
+    isValid = false;
+  } else {
+    printError("firstNameError", "");
+  }
+
+  if (lastName === "") {
+    printError("lastNameError", "Please enter your last name");
+    isValid = false;
+  } else if (!lastName.match(nameRegex)) {
+    printError("lastNameError", "Please enter a valid last name");
+    isValid = false;
+  } else {
+    printError("lastNameError", "");
+  }
+
+  if (username === "") {
+    printError("usernameError", "Please enter a username");
+    isValid = false;
+  } else if (!username.match(usernameRegex)) {
+    printError("usernameError", "Please enter a valid username");
+    isValid = false;
+  } else {
+    printError("usernameError", "");
+  }
+
+  if (email === "") {
+    printError("emailError", "Please enter an email address");
+    isValid = false;
+  } else if (!email.match(emailRegex)) {
+    printError("emailError", "Please enter a valid email address");
+    isValid = false;
+  } else {
+    printError("emailError", "");
+  }
+
+  if (isValid) {
+    saveUserInfo(form);
+  }
+}
+
+function saveUserInfo(form) {
+  var firstName = form.elements["editFirstName"].value.trim();
+  var lastName = form.elements["editLastName"].value.trim();
+  var username = form.elements["editUsername"].value.trim();
+  var email = form.elements["editEmail"].value.trim();
+
+  document.getElementById("firstName").value = firstName;
+  document.getElementById("lastName").value = lastName;
+  document.getElementById("username").value = username;
+  document.getElementById("email").value = email;
+
+  closeEditModal();
+}

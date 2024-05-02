@@ -132,6 +132,7 @@
                     <input type="email" id="email" value="sondos@gmail.com" readonly>
                   </div>
                 </div>
+                <button onclick="editGeneralInfo()">Edit</button>
               </div>
             </div>
 
@@ -162,7 +163,7 @@
             <textarea id="health-issues" name="health-issues" rows="3" cols="50" readonly>High blood pressure</textarea>
         </div>
         <div class="info2-section">
-            <label for="habits-goals">Health Goals:</label>
+            <label for="habits-goals">Health/Habit Goals:</label>
         </div>
             <div class="checkbox-container">
                 <input type="checkbox" id="goal1" name="goal1" class="checkbox-custom">
@@ -225,8 +226,8 @@
                 <i class="fas fa-star"></i>
             </div>
             <div class="feedback-textarea">
-                <label for="detailedFeedback"><b>Detailed Feedback:</b></label>
-                <textarea id="detailedFeedback" name="detailedFeedback" rows="4" cols="50" placeholder="Enter detailed feedback here..."></textarea>
+                <label for="feedback"><b>Feedback:</b></label>
+                <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Enter feedback here..."></textarea>
             </div>
            <button id="submitBtn" onclick="displayFeedbackModal()">Submit</button>
            <div id="feedbackSubmitButton" style="display: none;">
@@ -257,6 +258,42 @@
             <button id="closeFeedbackModalBtn">Close</button>
         </div>
     </div>
+
+    <!--editModal-->
+    <div id="editModal" class="editModal">
+        <div class="edit-modal-content">
+          <span class="close" onclick="closeEditModal()">&times;</span>
+          <h2>Edit General Info</h2>
+          <form id="editForm">
+            <div class="input-group">
+              <label for="editFirstName">First Name:</label>
+              <input type="text" id="editFirstName" name="editFirstName">
+              <div class="error" id="firstNameError"></div>
+            </div>
+            <div class="input-group">
+              <label for="editLastName">Last Name:</label>
+              <input type="text" id="editLastName" name="editLastName">
+              <div class="error" id="lastNameError"></div>
+            </div>
+            <div class="input-group">
+              <label for="editUsername">Username:</label>
+              <input type="text" id="editUsername" name="editUsername">
+              <div class="error" id="usernameError"></div>
+            </div>
+            <div class="input-group">
+              <label for="editEmail">Email:</label>
+              <input type="text" id="editEmail" name="editEmail">
+              <div class="error" id="emailError"></div>
+            </div>
+            <div class="button-group">
+                <button type="button" id="save" onclick="validateForm(editForm)">Save Changes</button>
+              <button type="button" onclick="closeEditModal()" class="cancel-button">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      
       
         <script src="C:\Users\DR ghada\HabitHarbor-Project\scripts\user.js"></script>
         
