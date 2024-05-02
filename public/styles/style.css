@@ -242,18 +242,41 @@ body{
 
 .badges {
     margin-left: 10px;
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
-    gap: 10px 0px; 
-    grid-area: badges; 
-    flex-direction: column;   
+    gap: 10px 0px;
+    grid-area: badges;
+    flex-direction: column;
 }
-.first-badge , .second-badge, .third-badge{
+
+.first-badge, .second-badge, .third-badge {
     background-color: white;
     width: auto;
     height: 55px;
     border-radius: 20px;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.10);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: box-shadow 0.3s ease;
+}
+
+.first-badge:hover, .second-badge:hover, .third-badge:hover {
+    box-shadow: 8px 6px 10px rgba(0, 0, 0, 0.30); /* Change shadow on hover */
+}
+
+.badge-title {
+    font-size: 12px;
+    text-shadow: 2px 2px 5px rgb(187, 187, 187);
+    margin: 0; /* Remove default margin */
+}
+
+#img-badge1, #img-badge2, #img-badge3 {
+    width: 50px;
+    height: 50px;
 }
 
  /*navbar style */
