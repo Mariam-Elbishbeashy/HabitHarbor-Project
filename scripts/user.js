@@ -17,24 +17,28 @@ function toggleOption(optionName) {
   var infoContent = document.getElementById("infoContent");
   var passwordContent = document.getElementById("passwordContent");
   var healthInfoContent = document.getElementById("healthInfoContent");
+  var socialLinksContent = document.getElementById("socialLinksContent");
   var feedbackContent = document.getElementById("feedbackContent");
 
   var generalLink = document.getElementById("generalLink");
   var infoLink = document.getElementById("infoLink");
   var passwordLink = document.getElementById("passwordLink");
   var healthInfoLink = document.getElementById("healthInfoLink");
+  var socialLinks = document.getElementById("socialLinksLink");
   var feedbackLink = document.getElementById("feedbackLink");
 
   generalContent.style.display = "none";
   infoContent.style.display = "none";
   passwordContent.style.display = "none";
   healthInfoContent.style.display = "none";
+  socialLinksContent.style.display="none";
   feedbackContent.style.display = "none";
 
   generalLink.classList.remove("active");
   infoLink.classList.remove("active");
   passwordLink.classList.remove("active");
   healthInfoLink.classList.remove("active");
+  socialLinks.classList.remove("active");
   feedbackLink.classList.remove("active");
 
   if (optionName === "general") {
@@ -48,12 +52,15 @@ function toggleOption(optionName) {
     } else if (optionName === "healthInfo") {
       healthInfoContent.style.display = "block";
       healthInfoLink.classList.add("active");
-
-  } else if (optionName === "password") {
+  } 
+else if (optionName === "socialLinks") {
+  socialLinksContent.style.display = "block";
+  socialLinks.classList.add("active");
+} 
+else if (optionName === "password") {
       passwordContent.style.display = "block";
       passwordLink.classList.add("active");
-      
-
+     
   } else if (optionName === "feedback") {
       feedbackContent.style.display = "block";
       feedbackLink.classList.add("active");
@@ -312,3 +319,115 @@ function saveUserInfo(form) {
 
   closeEditModal();
 }
+
+//social links
+function saveSocialLinksChanges() {
+  var facebookLink = document.getElementById("facebookLink").value;
+  var twitterLink = document.getElementById("twitterLink").value;
+  var instagramLink = document.getElementById("instagramLink").value;
+  var linkedinLink = document.getElementById("linkedinLink").value;
+
+  // Regular expressions for validating URLs
+  var urlRegex = /^(?:(ftp|http|https):\/\/)?[^ "]+$/;
+
+  // Error messages
+  var errorMessages = {
+      facebookLinkError: "Please enter a valid Facebook link",
+      twitterLinkError: "Please enter a valid Twitter link",
+      instagramLinkError: "Please enter a valid Instagram link",
+      linkedinLinkError: "Please enter a valid LinkedIn link"
+  };
+
+  var validationResults = {
+      facebookLinkError: !urlRegex.test(facebookLink),
+      twitterLinkError: !urlRegex.test(twitterLink),
+      instagramLinkError: !urlRegex.test(instagramLink),
+      linkedinLinkError: !urlRegex.test(linkedinLink)
+  };
+
+  Object.keys(validationResults).forEach(function(key) {
+      if (validationResults[key]) {
+          printError(key, errorMessages[key]);
+      } else {
+          printError(key, ""); 
+      }
+  });
+
+  var hasErrors = Object.values(validationResults).some(function(result) {
+      return result;
+  });
+
+  if (!hasErrors) {
+    var modal = document.getElementById("saveChanges-modal");
+    modal.style.display = "block";
+  
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  
+    var closeModalBtn = document.getElementById("closeModalBtn");
+    closeModalBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+  
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    var socialLinksInputs = document.querySelectorAll('#socialLinksContent input[type="text"]');
+    var saveChangesButton = document.querySelector('#socialLinksContent button');
+
+    socialLinksInputs.forEach(function(input) {
+        input.disabled = true;
+    });
+
+    saveChangesButton.style.display = "none";
+    editButton2.style.display = "block";
+
+    var modal = document.getElementById("saveChanges-modal");
+    modal.style.display = "block";
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    var closeModalBtn = document.getElementById("closeModalBtn");
+    closeModalBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    
+  }
+}
+
+function toggleEdit() {
+  var socialLinksInputs = document.querySelectorAll('#socialLinksContent input[type="text"]');
+  var saveChangesButton = document.getElementById("saveChangesButton");
+  var editButton = document.getElementById("editButton2");
+
+  socialLinksInputs.forEach(function(input) {
+    input.value = ""; 
+  });
+
+  socialLinksInputs.forEach(function(input) {
+    input.disabled = !input.disabled;
+  });
+
+  if (saveChangesButton.style.display === "none") {
+    saveChangesButton.style.display = "block";
+    editButton.style.display = "none";
+  } else {
+    saveChangesButton.style.display = "none";
+    editButton.style.display = "block";
+  }
+}
+
+

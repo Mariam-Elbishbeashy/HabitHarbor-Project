@@ -312,37 +312,37 @@ line-height: 20px;
 opacity: 0.7; 
 }
 
-.info-section {
+.user-profile {
   margin-bottom: 20px;
 }
 
-.info-section img {
+.user-profile img {
   display: block;
   width: 125px;
   height: auto;
   margin-bottom: 10px;
 }
 
-.info-section label {
+.user-profile label {
   display: block;
 }
 
-.info-section input {
+.user-profile input {
   width: 100%;
   padding: 5px;
   margin-top: 5px;
 }
 
-.info-section label {
+.user-profile label {
   font-weight: bold;
 }
 
-.info-section p {
+.user-profile p {
   color: red;
   font-size: 14px; 
 }
 
-.info-section input[type="text"] {
+.user-profile input[type="text"] {
   border: none;
   background-color: #f2f2f2;
   padding: 10px;
@@ -352,7 +352,7 @@ opacity: 0.7;
   font-size: 16px;
 }
 
-.info-section input[type="text"]:focus {
+.user-profile input[type="text"]:focus {
   outline: none;
 }
 
@@ -644,5 +644,82 @@ cursor: pointer;
 .error {
   color: red;
   font-size: 90%;
+  margin: 5px;
 }
 
+/*social section*/
+#socialLinksContent {
+  display: flex;
+  width:80%;
+}
+
+#socialLinksContent input::placeholder {
+  font-style: italic;
+  color: lightgrey;
+}
+
+
+.social-links {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.social-links input[type="text"] {
+  width:50%;
+  margin-right: 10px; 
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #CAF746;
+}
+
+.social-links i {
+  color: #98b935;
+  font-size: 24px;
+}
+
+#facebookLink::placeholder,
+#twitterLink::placeholder,
+#instagramLink::placeholder,
+#linkedinLink::placeholder {
+  color: #CAF746;
+}
+
+#facebookLink:focus,
+#twitterLink:focus,
+#instagramLink:focus,
+#linkedinLink:focus {
+  outline: none;
+  border: 2px solid #CAF746; 
+}
+
+
+.social-links a {
+  text-decoration: none;
+  color: #98b935;
+  font-size: 18px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+  color: #CAF746;
+  transform: scale(1.1); 
+}
+
+.social-links a:focus {
+  outline: none;
+}
+
+.social-links a::after {
+  content: "\f35d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: 5px;
+  transition: transform 0.3s; 
+}
+
+.social-links a:hover::after {
+  transform: scale(1.1); 
+}

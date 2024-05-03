@@ -98,6 +98,7 @@
             <li><a href="#" id="generalLink" class="active" onclick="toggleFontWeight('generalLink'); toggleOption('general')">General</a></li>
             <li><a href="#" id="infoLink" onclick="toggleFontWeight('infoLink'); toggleOption('info');">Info</a></li>
             <li><a href="#" id="healthInfoLink" onclick="toggleFontWeight('healthInfoLink'); toggleOption('healthInfo');">Health Info</a></li>
+            <li><a href="#" id="socialLinksLink" onclick="toggleFontWeight('socialLinksLink'); toggleOption('socialLinks');">Social Links</a></li>
             <li><a href="#" id="passwordLink" onclick="toggleFontWeight('passwordLink'); toggleOption('password');">Change Password</a></li>
             <li><a href="#" id="feedbackLink" onclick="toggleFontWeight('feedbackLink'); toggleOption('feedback');">Feedback</a></li>
               </ul>
@@ -105,11 +106,11 @@
 
             <!--general-->
             <div id="generalContent" class="content">
-              <div class="info-section">
+              <div class="user-profile">
                 <img src="images/download.jpg" alt="Profile Picture" id="profilePic">
                 <button onclick="changeProfile()">Change Profile</button>
               </div>
-              <div class="info-section">
+              <div class="user-profile">
                 <div class="general">
                   <div class="general-section">
                     <label for="firstName">First Name:</label>
@@ -138,19 +139,19 @@
 
             <!--info-->
               <div id="infoContent" class="content" style="display: none;">
-        <div class="info-section">
+        <div class="user-profile">
             <label for="age">Age:</label>
             <input type="text" id="age" value="25" readonly>
         </div>
-        <div class="info-section">
+        <div class="user-profile">
             <label for="height">Height:</label>
             <input type="text" id="height" value="170cm" readonly>
         </div>
-        <div class="info-section">
+        <div class="user-profile">
             <label for="weight">Weight:</label>
             <input type="text" id="weight" value="65kg" readonly>
         </div>
-        <div class="info-section">
+        <div class="user-profile">
             <label for="phoneNumber">Phone Number:</label>
             <input type="text" id="phoneNumber" value="+20 1123456789" readonly>
         </div>
@@ -158,7 +159,7 @@
 
     <!--health info-->
     <div id="healthInfoContent" class="content" style="display: none;">
-        <div class="info-section">
+        <div class="user-profile">
             <label for="healthIssues">Health Issues:</label>
             <textarea id="health-issues" name="health-issues" rows="3" cols="50" readonly>High blood pressure</textarea>
         </div>
@@ -186,25 +187,59 @@
                 <label class="checkbox-label" for="goal5">Other</label>
             </div>
             
-            <div class="info-section" id="otherGoalTextArea" style="display: none;">
+            <div class="user-profile" id="otherGoalTextArea" style="display: none;">
                 <label for="otherGoal">Other Goal:</label>
                 <textarea id="otherGoal" name="otherGoal" rows="2" cols="50" placeholder="Write here"></textarea>
             </div>
            
-            <div class="info-section custom-info">
+            <div class="user-profile custom-info">
                 <p>Please check the boxes for the health goals needed and click "Save Changes" to ensure they are saved.</p>
               </div>
 
-              <div class="info-section">
+              <div class="user-profile">
                 <button onclick="saveHealthInfoChanges()">Save Changes</button>
             </div> 
     </div>
     
+    <!--social links-->
+ <div id="socialLinksContent" class="content">
+    <div class="user-profile">
+        <div class="social-links">
+            <i class="fa-brands fa-facebook"></i>
+            <input type="text" id="facebookLink" placeholder="Enter your facebook link">
+            <a href="#" onclick="openLink('facebookLink')">Open</a>
+            <div class="error" id="facebookLinkError"></div>
+        </div>
+        <div class="social-links">
+            <i class="fa-brands fa-twitter "></i>
+            <input type="text" id="twitterLink" placeholder="Enter your twitter link">
+            <a href="#" onclick="openLink('twitterLink')">Open</a>
+            <div class="error" id="twitterLinkError"></div>
+        </div>
+        <div class="social-links">
+            <i class="fa-brands fa-instagram"></i>
+            <input type="text" id="instagramLink" placeholder="Enter your instagram link">
+            <a href="#" onclick="openLink('instagramLink')">Open</a>
+            <div class="error" id="instagramLinkError"></div>
+        </div>
+        <div class="social-links">
+            <i class="fa-brands fa-linkedin"></i>
+            <input type="text" id="linkedinLink" placeholder="Enter your linkedin link">
+            <a href="#" onclick="openLink('linkedinLink')">Open</a>
+            <div class="error" id="linkedinLinkError"></div>
+        </div>
+        <div class="user-profile">
+            <button id="saveChangesButton" onclick="saveSocialLinksChanges()">Save Changes</button>
+            <button id="editButton2" style="display: none;" onclick="toggleEdit()">Edit</button>
+        </div>
+    </div>
+</div>
+
     <!--password-->
     <div id="passwordContent" class="content" style="display: none;">
         <p>password</p>
     </div>
-
+    
     <!--feedback-->
     <div id="feedbackContent" class="content" style="display: none;">
         <div class ="feedback-section">
@@ -292,8 +327,6 @@
           </form>
         </div>
       </div>
-      
-      
       
         <script src="C:\Users\DR ghada\HabitHarbor-Project\scripts\user.js"></script>
         
