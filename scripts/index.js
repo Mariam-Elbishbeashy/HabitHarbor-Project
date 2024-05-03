@@ -134,3 +134,37 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.today').style.borderColor = 'black';
     });
 });
+
+function deleteForm(form){
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+        Swal.fire({
+            title: "Deleted!",
+            text: "Activity has been deleted.",
+            icon: "success"
+        });
+        }
+    });
+}
+
+function modalForm(form){
+    var currentUrl = window.location.href;
+    var baseUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1);
+    var imageUrl = baseUrl + "images/award.gif";
+    Swal.fire({
+        title: "Congratulations!",
+        text: "You have completed this challenge",
+        imageUrl: imageUrl,
+        imageWidth: 400,
+        imageHeight: 250,
+        imageAlt: "Custom image"
+      });
+}
