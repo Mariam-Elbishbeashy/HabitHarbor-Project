@@ -161,7 +161,7 @@
     <div id="healthInfoContent" class="content" style="display: none;">
         <div class="user-profile">
             <label for="healthIssues">Health Issues:</label>
-            <textarea id="health-issues" name="health-issues" rows="3" cols="50" readonly>High blood pressure</textarea>
+            <textarea id="health-issues" name="health-issues" rows="3" cols="50"></textarea>
         </div>
         <div class="info2-section">
             <label for="habits-goals">Health/Habit Goals:</label>
@@ -198,6 +198,7 @@
 
               <div class="user-profile">
                 <button onclick="saveHealthInfoChanges()">Save Changes</button>
+                <button id="editHealthInfoButton" onclick="editHealthInfo()" style="display: none;">Edit Health Info</button>
             </div> 
     </div>
     
@@ -235,10 +236,47 @@
     </div>
 </div>
 
-    <!--password-->
-    <div id="passwordContent" class="content" style="display: none;">
-        <p>password</p>
+  <!--password-->
+  <div id="passwordContent" class="content">
+    <div class="user-profile">
+        <div class="password-section">
+            <label for="currentPassword">Current Password:</label>
+            <div class="password-container">
+                <input type="password" id="currentPassword" name="currentPassword">
+                <div class="password-checkbox-container">
+                    <input type="checkbox" id="showCurrentPassword" class="checkbox-custom">
+                    <label for="showCurrentPassword" class="checkbox-label">Show Password</label>
+                </div>
+                <div class="error" id="currentPasswordError"></div>
+            </div>
+        </div>
+        <div class="password-section">
+            <label for="newPassword">New Password:</label>
+            <div class="password-container">
+                <input type="password" id="newPassword" name="newPassword">
+                <div class="password-checkbox-container">
+                    <input type="checkbox" id="showNewPassword" class="checkbox-custom">
+                    <label for="showNewPassword" class="checkbox-label">Show Password</label>
+                </div>
+                <div class="error" id="newPasswordError"></div> 
+            </div>
+        </div>
+        <div class="password-section">
+            <label for="confirmPassword">Confirm Password:</label>
+            <div class="password-container">
+                <input type="password" id="confirmPassword" name="confirmPassword">
+                <div class="password-checkbox-container">
+                    <input type="checkbox" id="showConfirmPassword" class="checkbox-custom">
+                    <label for="showConfirmPassword" class="checkbox-label">Show Password</label>
+                </div>
+                <div class="error" id="confirmPasswordError"></div> 
+            </div>
+        </div>
+        <button onclick="changePassword()">Save Changes</button>
     </div>
+</div>
+
+
     
     <!--feedback-->
     <div id="feedbackContent" class="content" style="display: none;">
@@ -330,5 +368,10 @@
       
         <script src="C:\Users\DR ghada\HabitHarbor-Project\scripts\user.js"></script>
         
+        <script>
+            showPassword('currentPassword', 'showCurrentPassword');
+        showPassword('newPassword', 'showNewPassword');
+        showPassword('confirmPassword', 'showConfirmPassword');
+        </script>
 </body>
 </html>

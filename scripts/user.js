@@ -118,7 +118,7 @@ function saveHealthInfoChanges() {
   var saveChangesButton = document.querySelector('#healthInfoContent button');
 
   checkboxes.forEach(function(checkbox) {
-    checkbox.disabled = true;
+      checkbox.disabled = true;
   });
 
   otherTextArea.disabled = true;
@@ -130,28 +130,148 @@ function saveHealthInfoChanges() {
   instructionLine.style.display = "none";
 
   checkboxes.forEach(function(checkbox) {
-    checkbox.classList.add('disabled-checkbox');
+      checkbox.classList.add('disabled-checkbox');
   });
+
+  var healthIssuesTextArea = document.getElementById("health-issues");
+  healthIssuesTextArea.disabled = true;
 
   var modal = document.getElementById("saveChanges-modal");
   modal.style.display = "block";
 
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function() {
-    modal.style.display = "none";
+      modal.style.display = "none";
   }
 
   var closeModalBtn = document.getElementById("closeModalBtn");
   closeModalBtn.onclick = function() {
-    modal.style.display = "none";
+      modal.style.display = "none";
   }
 
   window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  var editButton = document.getElementById("editHealthInfoButton");
+  editButton.style.display = "block";
+
+  disableTextAreaAndCheckboxes(true);
+  
+}
+
+function editHealthInfo() {
+  disableTextAreaAndCheckboxes(false);
+
+  var saveChangesButton = document.querySelector('#healthInfoContent button');
+  saveChangesButton.style.display = "block";
+
+  var editButton = document.getElementById("editHealthInfoButton");
+  editButton.style.display = "none";
+
+  var checkboxes = document.querySelectorAll('#healthInfoContent input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+      checkbox.classList.remove('disabled-checkbox');
+  });
+}
+
+//Password
+function validatePasswords() {
+  var currentPasswordInput = document.getElementById("currentPassword");
+  var newPasswordInput = document.getElementById("newPassword");
+  var confirmPasswordInput = document.getElementById("confirmPassword");
+  var currentPassword = currentPasswordInput.value;
+  var newPassword = newPasswordInput.value;
+  var confirmPassword = confirmPasswordInput.value;
+  var currentPasswordError = document.getElementById("currentPasswordError"); 
+  var newPasswordError = document.getElementById("newPasswordError");
+  var confirmPasswordError = document.getElementById("confirmPasswordError");
+
+  var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+
+  if (currentPassword.trim() === '') {
+      currentPasswordError.innerHTML = "Please enter your current password"; 
+      return false;
+  } else {
+      currentPasswordError.innerHTML = ""; 
+  }
+
+  if (newPassword !== confirmPassword) {
+      confirmPasswordError.innerHTML = "Passwords do not match";
+      return false;
+  } else {
+      confirmPasswordError.innerHTML = "";
+  }
+
+  if (newPassword === currentPassword) {
+      newPasswordError.innerHTML = "New password cannot be the same as the current password";
+      return false;
+  } else {
+      newPasswordError.innerHTML = "";
+  }
+
+  if (!newPassword.match(passwordRegex)) {
+      newPasswordError.innerHTML = "Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters";
+      return false;
+  } else {
+      newPasswordError.innerHTML = "";
+  }
+
+  confirmPasswordError.innerHTML = "";
+  newPasswordError.innerHTML = "";
+
+  return true;
+}
+
+
+function changePassword() {
+  if (validatePasswords()) {
+    var modal = document.getElementById("saveChanges-modal");
+    modal.style.display = "block";
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
     }
+
+    var closeModalBtn = document.getElementById("closeModalBtn");
+    closeModalBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    document.getElementById("currentPassword").value = "";
+    document.getElementById("newPassword").value = "";
+    document.getElementById("confirmPassword").value = "";
+
+    document.getElementById("showCurrentPassword").checked = false;
+    document.getElementById("showNewPassword").checked = false;
+    document.getElementById("showConfirmPassword").checked = false;
+    
+  } else {
+      console.log("Password validation failed...");
   }
 }
+
+function disableTextAreaAndCheckboxes(disabled) {
+  var healthIssuesTextArea = document.getElementById("health-issues");
+  healthIssuesTextArea.disabled = disabled;
+
+  var checkboxes = document.querySelectorAll('#healthInfoContent input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+      checkbox.disabled = disabled;
+  });
+
+  var otherTextArea = document.getElementById("otherGoal");
+  otherTextArea.disabled = disabled;
+}
+
 
 //feedback
 function starRating() {
@@ -330,7 +450,6 @@ function saveSocialLinksChanges() {
   // Regular expressions for validating URLs
   var urlRegex = /^(?:(ftp|http|https):\/\/)?[^ "]+$/;
 
-  // Error messages
   var errorMessages = {
       facebookLinkError: "Please enter a valid Facebook link",
       twitterLinkError: "Please enter a valid Twitter link",
@@ -430,4 +549,15 @@ function toggleEdit() {
   }
 }
 
-
+function showPassword(inputId, checkboxId) {
+  var passwordInput = document.getElementById(inputId);
+  var checkbox = document.getElementById(checkboxId);
+  
+  checkbox.addEventListener('change', function() {
+      if (checkbox.checked) {
+          passwordInput.type = 'text';
+      } else {
+          passwordInput.type = 'password';
+      }
+  });
+}
