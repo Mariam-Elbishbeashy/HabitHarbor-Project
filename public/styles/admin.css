@@ -1,0 +1,16 @@
+.container {  
+    display: grid;
+    grid-template-columns: 0.05fr 1fr;
+    grid-template-rows: 0.25fr 3.4fr 0.2fr;
+    gap: 20px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Header Header Header"
+        "navbar main main"
+        "footer footer footer";
+    /*to control container default css*/        
+    height: 100vh;
+    margin: 0% !important;
+    max-width: 100% !important;
+    background-color: rgb(248, 246, 246);
+}
