@@ -691,3 +691,91 @@ function openLink(linkId) {
 }
 
 
+function saveGenderCountryChanges() {
+  // Disable gender selection
+  document.querySelectorAll('input[name="gender"]').forEach(radio => {
+      radio.disabled = true;
+  });
+
+  // Disable country selection
+  document.getElementById('country').disabled = true;
+
+  // Disable the "Save Changes" button
+  document.getElementById('saveChangesButton').style.display = 'none';
+
+  // Show the "Edit Gender" button
+  document.getElementById('editGenderButton').style.display = 'inline-block';
+
+  // Hide the paragraph
+  document.querySelector('.custom-info p').style.display = 'none';
+}
+function editGenderCountry() {
+  // Enable gender selection
+  document.querySelectorAll('input[name="gender"]').forEach(radio => {
+      radio.disabled = false;
+  });
+
+  // Enable country selection
+  document.getElementById('country').disabled = false;
+
+  // Show the "Save Changes" button
+  document.getElementById('saveChangesButton').style.display = 'inline-block';
+
+  // Hide the "Edit" button
+  document.getElementById('editButton3').style.display = 'none';
+
+  // Show the "Edit Gender" button
+  document.getElementById('editGenderButton').style.display = 'none';
+
+  // Show the paragraph
+  document.querySelector('.custom-info p').style.display = 'block';
+}
+
+function editInfo() {
+  // Open the edit info modal
+  document.getElementById('editInfoModal').style.display = 'block';
+  // Clear fields and errors
+  document.getElementById('editAge').value = '';
+  document.getElementById('editPhoneNumber').value = '';
+  document.getElementById('countryCode').selectedIndex = 0; // Reset country code to default
+  document.getElementById('ageError').innerText = '';
+  document.getElementById('numberError').innerText = '';
+}
+
+function closeEditInfoModal() {
+  // Close the edit info modal
+  document.getElementById('editInfoModal').style.display = 'none';
+}
+
+function saveEditedInfo() {
+  // Validate age
+  var age = document.getElementById('editAge').value;
+  var ageError = '';
+  if (isNaN(age) || age === '' || age <= 0 ||age>120) {
+      ageError = 'Please enter a valid age.';
+  }
+
+  // Validate phone number
+  var phoneNumber = document.getElementById('editPhoneNumber').value;
+  var numberError = '';
+  if (!(/^\+?\d{1,3}[- ]?\d{9}$/.test(phoneNumber))) {
+      numberError = 'Please enter a valid phone number.';
+  }
+
+  // Display errors
+  document.getElementById('ageError').innerText = ageError;
+  document.getElementById('numberError').innerText = numberError;
+
+  // If both age and phone number have errors, stop further processing
+  if (ageError !== '' || numberError !== '') {
+      return;
+  }
+
+  // Update the values in the original content
+  document.getElementById('age').value = age;
+  document.getElementById('phoneNumber').value = document.getElementById('countryCode').value + " " + phoneNumber;
+  // Close the modal
+  closeEditInfoModal();
+}
+
+
