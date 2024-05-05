@@ -8,6 +8,7 @@ window.onload = function() {
   generalLink.style.color = '#CAF746'; 
   toggleFontWeight('generalLink');
   starRating(); 
+  calculateBMI();
   
 };
 
@@ -15,30 +16,34 @@ window.onload = function() {
 function toggleOption(optionName) {
   var generalContent = document.getElementById("generalContent");
   var infoContent = document.getElementById("infoContent");
-  var passwordContent = document.getElementById("passwordContent");
+  var bmiContent = document.getElementById("bmiContent");
   var healthInfoContent = document.getElementById("healthInfoContent");
   var socialLinksContent = document.getElementById("socialLinksContent");
+  var passwordContent = document.getElementById("passwordContent");
   var feedbackContent = document.getElementById("feedbackContent");
 
   var generalLink = document.getElementById("generalLink");
   var infoLink = document.getElementById("infoLink");
-  var passwordLink = document.getElementById("passwordLink");
+  var bmiLink = document.getElementById("bmiLink");
   var healthInfoLink = document.getElementById("healthInfoLink");
   var socialLinks = document.getElementById("socialLinksLink");
+  var passwordLink = document.getElementById("passwordLink");
   var feedbackLink = document.getElementById("feedbackLink");
 
   generalContent.style.display = "none";
   infoContent.style.display = "none";
-  passwordContent.style.display = "none";
+  bmiContent.style.display = "none";
   healthInfoContent.style.display = "none";
   socialLinksContent.style.display="none";
+  passwordContent.style.display = "none";
   feedbackContent.style.display = "none";
 
   generalLink.classList.remove("active");
   infoLink.classList.remove("active");
-  passwordLink.classList.remove("active");
+  bmiLink.classList.remove("active");
   healthInfoLink.classList.remove("active");
   socialLinks.classList.remove("active");
+  passwordLink.classList.remove("active");
   feedbackLink.classList.remove("active");
 
   if (optionName === "general") {
@@ -49,7 +54,14 @@ function toggleOption(optionName) {
       infoContent.style.display = "block";
       infoLink.classList.add("active");
 
-    } else if (optionName === "healthInfo") {
+    }
+
+    else if (optionName === "bmi") { 
+      bmiContent.style.display = "block";
+      bmiLink.classList.add("active");
+  }
+    
+    else if (optionName === "healthInfo") {
       healthInfoContent.style.display = "block";
       healthInfoLink.classList.add("active");
   } 
@@ -110,6 +122,112 @@ function toggleFontWeight(linkId) {
     } else {
         otherTextArea.style.display = "none";
     }
+}
+
+//BMI
+function calculateBMI() {
+  var heightInput = document.getElementById("heightCm").value;
+  var weightInput = document.getElementById("weightKg").value;
+  
+  var heightMeters = parseFloat(heightInput) / 100; 
+  
+  var weightKg = parseFloat(weightInput);
+  
+  var bmi = weightKg / (heightMeters * heightMeters);
+  
+  var bmiOutput = document.getElementById("bmi");
+  bmiOutput.textContent = bmi.toFixed(2); 
+  
+  var descOutput = document.getElementById("desc");
+  var color;
+  if (bmi < 18.5) {
+      descOutput.textContent = "Underweight";
+      color = getComputedStyle(document.documentElement).getPropertyValue("--underweight");
+  } else if (bmi >= 18.5 && bmi < 25) {
+      descOutput.textContent = "Normal";
+      color = getComputedStyle(document.documentElement).getPropertyValue("--normal");
+  } else if (bmi >= 25 && bmi < 30) {
+      descOutput.textContent = "Overweight";
+      color = getComputedStyle(document.documentElement).getPropertyValue("--overweight");
+  } else {
+      descOutput.textContent = "Obese";
+      color = getComputedStyle(document.documentElement).getPropertyValue("--obese");
+  }
+  descOutput.style.color = color; 
+  
+  var scaleDivs = document.querySelectorAll(".bmi-scale div");
+  scaleDivs.forEach(function(div) {
+      var range = div.querySelector("p").textContent.split('-');
+      var minRange = parseFloat(range[0]);
+      var maxRange = parseFloat(range[1]);
+      
+      if (bmi >= minRange && bmi < maxRange) {
+          var color = div.style.getPropertyValue("--color");
+      }
+  });
+}
+
+
+
+
+function weightHeightModal() {
+  var modal = document.getElementById("weightHeightModal");
+  modal.style.display = "block";
+}
+
+function closeWeightHeightModal() {
+  var modal = document.getElementById("weightHeightModal");
+  modal.style.display = "none";
+}
+
+function saveWeightHeight() {
+  var weightInput = document.getElementById("weightInput").value.trim(); 
+  var heightInput = document.getElementById("heightInput").value.trim(); 
+  var weightError = document.getElementById("weightError");
+  var heightError = document.getElementById("heightError");
+
+  if (weightInput === "" || isNaN(parseFloat(weightInput)) || parseFloat(weightInput) <= 0) {
+    weightError.textContent = "Please enter a valid weight.";
+  } else {
+    weightError.textContent = ""; 
+  }
+
+  if (heightInput === "" || isNaN(parseFloat(heightInput)) || parseFloat(heightInput) <= 0) {
+    heightError.textContent = "Please enter a valid height.";
+  } else {
+    heightError.textContent = ""; 
+  }
+
+  if (weightError.textContent === "" && heightError.textContent === "") {
+    var weight = parseFloat(weightInput);
+    var weightUnit = document.getElementById("weightUnit").value;
+    var height = parseFloat(heightInput);
+    var heightUnit = document.getElementById("heightUnit").value;
+
+    if (weightUnit === "lbs") {
+       var weightKg = (weight * 0.453592).toFixed(2); 
+       document.getElementById("weightKg").value = weightKg + " kg";
+       document.getElementById("weightLbs").value = weight + " lbs";
+    } else {
+      var weightLbs = (weight * 2.2046).toFixed(2);
+      document.getElementById("weightKg").value = weight + " kg";
+      document.getElementById("weightLbs").value = weightLbs + " lbs";
+    }
+
+    if (heightUnit === "feet") {
+       var heightCm = (height * 30.48).toFixed(2); 
+       document.getElementById("heightCm").value = heightCm + " cm";
+       document.getElementById("heightFt").value = height + " ft";
+    } else {
+      var heightFt= (height / 30.48).toFixed(2);
+      document.getElementById("heightCm").value = height + " cm";
+      document.getElementById("heightFt").value = heightFt + " ft";
+    }
+
+    calculateBMI();
+
+    closeWeightHeightModal();
+  }
 }
 
 function saveHealthInfoChanges() {
@@ -257,6 +375,20 @@ function changePassword() {
   } else {
       console.log("Password validation failed...");
   }
+}
+
+
+function showPassword(inputId, checkboxId) {
+  var passwordInput = document.getElementById(inputId);
+  var checkbox = document.getElementById(checkboxId);
+  
+  checkbox.addEventListener('change', function() {
+      if (checkbox.checked) {
+          passwordInput.type = 'text';
+      } else {
+          passwordInput.type = 'password';
+      }
+  });
 }
 
 function disableTextAreaAndCheckboxes(disabled) {
@@ -447,8 +579,8 @@ function saveSocialLinksChanges() {
   var instagramLink = document.getElementById("instagramLink").value;
   var linkedinLink = document.getElementById("linkedinLink").value;
 
-  // Regular expressions for validating URLs
-  var urlRegex = /^(?:(ftp|http|https):\/\/)?[^ "]+$/;
+  // Regular expression for validating URLs
+  var urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
 
   var errorMessages = {
       facebookLinkError: "Please enter a valid Facebook link",
@@ -458,10 +590,10 @@ function saveSocialLinksChanges() {
   };
 
   var validationResults = {
-      facebookLinkError: !urlRegex.test(facebookLink),
-      twitterLinkError: !urlRegex.test(twitterLink),
-      instagramLinkError: !urlRegex.test(instagramLink),
-      linkedinLinkError: !urlRegex.test(linkedinLink)
+      facebookLinkError: !urlRegex.test(facebookLink) && facebookLink.trim() !== '',
+      twitterLinkError: !urlRegex.test(twitterLink) && twitterLink.trim() !== '',
+      instagramLinkError: !urlRegex.test(instagramLink) && instagramLink.trim() !== '',
+      linkedinLinkError: !urlRegex.test(linkedinLink) && linkedinLink.trim() !== ''
   };
 
   Object.keys(validationResults).forEach(function(key) {
@@ -549,15 +681,13 @@ function toggleEdit() {
   }
 }
 
-function showPassword(inputId, checkboxId) {
-  var passwordInput = document.getElementById(inputId);
-  var checkbox = document.getElementById(checkboxId);
-  
-  checkbox.addEventListener('change', function() {
-      if (checkbox.checked) {
-          passwordInput.type = 'text';
-      } else {
-          passwordInput.type = 'password';
-      }
-  });
+function openLink(linkId) {
+  var link = document.getElementById(linkId).value;
+  if (link.trim() !== '') {
+      window.open(link, '_blank');
+  } else {
+      alert("Please enter a valid link before opening.");
+  }
 }
+
+

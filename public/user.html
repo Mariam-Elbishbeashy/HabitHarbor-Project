@@ -97,6 +97,7 @@
               <ul>
             <li><a href="#" id="generalLink" class="active" onclick="toggleFontWeight('generalLink'); toggleOption('general')">General</a></li>
             <li><a href="#" id="infoLink" onclick="toggleFontWeight('infoLink'); toggleOption('info');">Info</a></li>
+            <li><a href="#" id="bmiLink" onclick="toggleFontWeight('bmiLink'); toggleOption('bmi');">BMI</a></li>
             <li><a href="#" id="healthInfoLink" onclick="toggleFontWeight('healthInfoLink'); toggleOption('healthInfo');">Health Info</a></li>
             <li><a href="#" id="socialLinksLink" onclick="toggleFontWeight('socialLinksLink'); toggleOption('socialLinks');">Social Links</a></li>
             <li><a href="#" id="passwordLink" onclick="toggleFontWeight('passwordLink'); toggleOption('password');">Change Password</a></li>
@@ -137,31 +138,82 @@
               </div>
             </div>
 
-            <!--info-->
-              <div id="infoContent" class="content" style="display: none;">
-        <div class="user-profile">
-            <label for="age">Age:</label>
-            <input type="text" id="age" value="25" readonly>
-        </div>
-        <div class="user-profile">
-            <label for="height">Height:</label>
-            <input type="text" id="height" value="170cm" readonly>
-        </div>
-        <div class="user-profile">
-            <label for="weight">Weight:</label>
-            <input type="text" id="weight" value="65kg" readonly>
-        </div>
-        <div class="user-profile">
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="text" id="phoneNumber" value="+20 1123456789" readonly>
-        </div>
-    </div>
+            <div id="infoContent" class="content">
+                <div class="user-profile">
+                    <label for="age">Age:</label>
+                    <input type="text" id="age" value="25" readonly>
+                </div>
+                <div class="user-profile">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" value="+20 1123456789" readonly>
+                </div>
+                <div class="user-profile">
+                    <label for="gender">Gender:</label>
+                    <div id="gender">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male" class="gender-label"><i class="fa-solid fa-person"></i> Male</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female" class="gender-label"><i class="fa-solid fa-person-dress"></i> Female</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BMI Content -->
+            <div id="bmiContent" class="content" style="display: none;">
+                <div class="user-profile">
+                    <div class="heightWeight">
+                        <label for="height">Height (cm):</label>
+                        <input type="text" id="heightCm" value="170 cm" readonly>
+                    </div>
+                    <div class="heightWeight">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="text" id="weightKg" value="65 kg" readonly>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <div class="heightWeight">
+                        <label for="height">Height (ft):</label>
+                        <input type="text" id="heightFt" value="143.3 lbs" readonly>
+                    </div>
+                    <div class="heightWeight">
+                        <label for="weight">Weight (lbs):</label>
+                        <input type="text" id="weightLbs" value="5.57 ft" readonly>
+                    </div>
+                </div>
+                <section class="output">
+                    <h3>Your BMI is</h3>
+                    <p id="bmi">0</p>
+                    <p id="desc">N/A</p>
+                </section>
+                <section class="bmi-scale">
+                    <div style="--color:var(--underweight)">
+                        <h4>UnderWeight</h4>
+                        <p>&lt; 18.5</p>
+                    </div>
+                    <div style="--color:var(--normal)">
+                        <h4>Normal</h4>
+                        <p>18.5-25</p>
+                    </div>
+                    <div style="--color:var(--overweight)">
+                        <h4>OverWeight</h4>
+                        <p>25-30</p>
+                    </div>
+
+                    <div style="--color:var(--obese)">
+                        <h4>Obese</h4>
+                        <p>≥ 30</p>
+                    </div>
+
+                </section>
+                <button onclick="weightHeightModal()">Edit Weight and Height</button>
+            </div>
+            
 
     <!--health info-->
     <div id="healthInfoContent" class="content" style="display: none;">
         <div class="user-profile">
             <label for="healthIssues">Health Issues:</label>
-            <textarea id="health-issues" name="health-issues" rows="3" cols="50"></textarea>
+            <textarea id="health-issues" name="health-issues" rows="3" cols="50" placeholder="Enter your health issues here..."></textarea>
         </div>
         <div class="info2-section">
             <label for="habits-goals">Health/Habit Goals:</label>
@@ -365,11 +417,37 @@
           </form>
         </div>
       </div>
+
+      <div id="weightHeightModal" class="modal">
+        <div class="weight-height-content">
+            <span class="close" onclick="closeWeightHeightModal()">&times;</span>
+            <h2>Edit Weight and Height</h2>
+            <div>
+                <label for="weight">Weight:</label>
+                <input type="number" id="weightInput" step="0.1">
+                <div class="error" id="weightError"></div>
+                <select id="weightUnit">
+                    <option value="kg">kg</option>
+                    <option value="lbs">lbs</option>
+                </select>
+            </div>
+            <div>
+                <label for="height">Height:</label>
+                <input type="number" id="heightInput" step="0.1">
+                <div class="error" id="heightError"></div>
+                <select id="heightUnit">
+                    <option value="cm">cm</option>
+                    <option value="feet">feet</option>
+                </select>
+            </div>
+            <button onclick="saveWeightHeight()">Save Changes</button>
+        </div>
+    </div>
       
         <script src="C:\Users\DR ghada\HabitHarbor-Project\scripts\user.js"></script>
         
         <script>
-            showPassword('currentPassword', 'showCurrentPassword');
+        showPassword('currentPassword', 'showCurrentPassword');
         showPassword('newPassword', 'showNewPassword');
         showPassword('confirmPassword', 'showConfirmPassword');
         </script>
