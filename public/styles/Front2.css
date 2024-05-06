@@ -65,7 +65,7 @@ color: black;
 
 .Features>h1{
   font-family: 'Pacifico', cursive; 
-font-size: 40px;
+font-size: 60px;
 text-shadow: 2px 2px 4px #CAF746;
 text-align: center;
 
@@ -147,3 +147,34 @@ footer .menu li a:hover{
   margin-bottom: 10px;
   font-size: 1.1em;
  }
+
+
+ /* Styles for the About section */
+#about {
+  padding-bottom: 250px;
+  color: black; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px; 
+  border-bottom: 2px solid rgb(156, 156, 156);
+
+}
+
+#about h1 {
+  font-family: 'Pacifico', cursive; 
+  font-size: 60px;
+  text-shadow: 2px 2px 4px #CAF746;
+  text-align: center;
+}
+
+#about p {
+  font-size: 30px;
+  text-align: center;
+}
+
+
+
+
+
