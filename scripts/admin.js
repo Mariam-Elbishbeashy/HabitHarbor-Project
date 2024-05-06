@@ -1,7 +1,15 @@
 function displayUsers() {
     const adminContent = document.getElementById('admin-content');
+
     // Clear the current content
     adminContent.innerHTML = '';
+    const addButton = document.createElement('button');
+    addButton.id = 'add-btn';
+    addButton.className = 'admin-btn';
+    addButton.classList.add('add-btn');
+    addButton.textContent = 'Add';
+    adminContent.appendChild(addButton);
+
     const users = ['Laura Lucas', 'Mariam Bishbeashy','Sama Ahmed', 'Sondos Ahmed', 'Ahmed Hesham'];
     users.forEach(user => {
         // Create a div for each user
@@ -37,11 +45,16 @@ function displayUsers() {
                 <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
             </svg>
         `;
+        removeUserBtn.addEventListener('click', function() {
+            // Call deleteForm function when remove button is clicked
+            deleteForm(user);
+        });
 
+       
         buttonsContainer.appendChild(editUserBtn);
         buttonsContainer.appendChild(removeUserBtn);
         userDiv.appendChild(buttonsContainer);
-
+       
         adminContent.appendChild(userDiv);
     });
 }
@@ -49,6 +62,12 @@ function displayAdmins() {
     const adminContent = document.getElementById('admin-content');
     
     adminContent.innerHTML = '';
+    const addButton = document.createElement('button');
+    addButton.id = 'add-btn';
+    addButton.className = 'admin-btn';
+    addButton.classList.add('add-btn');
+    addButton.textContent = 'Add';
+    adminContent.appendChild(addButton);
     const admins = ['Lara Khaled'];
     admins.forEach(admin => {
 
@@ -64,6 +83,7 @@ function displayAdmins() {
 
         const editAdminBtn = document.createElement('button');
         editAdminBtn.className = 'admin-btn';
+        editAdminBtn.id = 'edit-btn'
         editAdminBtn.innerHTML = `
             <i class="bi bi-pencil"></i>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -73,6 +93,7 @@ function displayAdmins() {
         
         const removeAdminBtn = document.createElement('button');
         removeAdminBtn.className = 'admin-btn';
+        removeAdminBtn.id = 'remove-btn';
         removeAdminBtn.innerHTML = `
             <i class="bi bi-person-dash"></i>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash" viewBox="0 0 16 16">
@@ -80,6 +101,10 @@ function displayAdmins() {
                 <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
             </svg>
         `;
+        removeAdminBtn.addEventListener('click', function() {
+            // Call deleteForm function when remove button is clicked
+            deleteForm(admin);
+        });
         
         buttonsContainer.appendChild(editAdminBtn);
         buttonsContainer.appendChild(removeAdminBtn);
@@ -92,6 +117,12 @@ function displayAdmins() {
 function displayDailyChallenges(category) {
     const adminContent = document.getElementById('admin-content');
     adminContent.innerHTML = '';
+    const addButton = document.createElement('button');
+    addButton.id = 'add-btn';
+    addButton.className = 'admin-btn';
+    addButton.classList.add('add-btn');
+    addButton.textContent = 'Add';
+    adminContent.appendChild(addButton);
 
     const dailyChallenges = {
         Physical: ['Run for an hour', 'Swim for 30 minutes'],
@@ -133,7 +164,10 @@ function displayDailyChallenges(category) {
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
             </svg>
         `;
-
+        removeActivityBtn.addEventListener('click', function() {
+            // Call deleteForm with the necessary parameters
+            deleteForm(activity);
+        });
         buttonsContainer.appendChild(editActivityBtn);
         buttonsContainer.appendChild(removeActivityBtn);
         activityDiv.appendChild(buttonsContainer);
@@ -168,4 +202,23 @@ function activateButton(buttonId) {
 
     const activeButton = document.getElementById(buttonId);
     activeButton.classList.add('active');
+}
+function deleteForm(form){
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+        Swal.fire({
+            title: "Deleted!",
+            text: "Activity has been deleted.",
+            icon: "success"
+        });
+        }
+    });
 }

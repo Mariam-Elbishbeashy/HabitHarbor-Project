@@ -94,6 +94,10 @@
   #users-btn:active .icon, #activities-btn:active .icon {
     transform: scale(0.95);
   }
+  #edit-btn:hover, #remove-btn:hover {
+    background-color: grey;
+    color: white;
+}
   
 .user-category, .challenges-category{
     display: none;
@@ -122,4 +126,30 @@
 .buttons-container {
     display: flex; 
     gap: 5px;
+}
+#add-btn{
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    margin-top: 5px;
+    font-size: 17px;
+}
+#add-btn:hover {
+    letter-spacing: 2px;
+    background-color: #caf746;
+    color: white;
+    box-shadow: #caf746 0px 7px 29px 0px;
+}
+#add-btn:active {
+    letter-spacing: 2px;
+    background-color: #caf746;
+    color: white;
+    box-shadow: #caf746 0px 0px 0px 0px;
+    transform: scale(1.07);
 }
