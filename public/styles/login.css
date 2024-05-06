@@ -61,28 +61,6 @@ button{
   border-radius: 5px;
   cursor: pointer;
 }
-.social{
-margin-top: 30px;
-display: flex;
-}
-.social div{
-background: black;
-width: 150px;
-border-radius: 3px;
-padding: 5px 10px 10px 5px;
-background-color: black;
-color: #CAF746;
-text-align: center;
-}
-.social div:hover{
-background-color: rgba(255,255,255,0.47);
-}
-.social .fb{
-margin-left: 40px;
-}
-.social i{
-margin-right: 4px;
-}
 
 .member{
   display: flex;
