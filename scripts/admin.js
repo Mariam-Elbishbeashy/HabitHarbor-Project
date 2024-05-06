@@ -49,7 +49,13 @@ function displayUsers() {
             // Call deleteForm function when remove button is clicked
             deleteForm(user);
         });
+        addButton.addEventListener('click', function() {
+            addUser(user);
+        });
 
+        editUserBtn.addEventListener('click', function() {
+            editUser(user);
+        });
        
         buttonsContainer.appendChild(editUserBtn);
         buttonsContainer.appendChild(removeUserBtn);
@@ -105,7 +111,13 @@ function displayAdmins() {
             // Call deleteForm function when remove button is clicked
             deleteForm(admin);
         });
-        
+        addButton.addEventListener('click', function() {
+            addAdmin(admin);
+        });
+
+        editAdminBtnButton.addEventListener('click', function() {
+            editAdmin(admin);
+        });
         buttonsContainer.appendChild(editAdminBtn);
         buttonsContainer.appendChild(removeAdminBtn);
         adminDiv.appendChild(buttonsContainer);
@@ -168,6 +180,15 @@ function displayDailyChallenges(category) {
             // Call deleteForm with the necessary parameters
             deleteForm(activity);
         });
+
+        addButton.addEventListener('click', function() {
+            addChallenge(activity);
+        });
+
+        editActivityBtn.addEventListener('click', function() {
+            editChallenge(activity);
+        });
+
         buttonsContainer.appendChild(editActivityBtn);
         buttonsContainer.appendChild(removeActivityBtn);
         activityDiv.appendChild(buttonsContainer);
@@ -222,3 +243,232 @@ function deleteForm(form){
         }
     });
 }
+
+function addChallenge(form) {
+    Swal.fire({
+        title: "Add challenge",
+        html: `
+            <label>Select a category:</label>
+            <select id="category-select" class="swal2-select" style="width: 80%;">
+                <option value="physical">Select</option>
+                <option value="physical">Physical</option>
+                <option value="well_being">Well-being</option>
+                <option value="nutrition">Nutrition</option>
+            </select>
+            <label>Challenge:</label>
+            <input id="swal-input1" class="swal2-input" style="width: 80%;">
+        `,
+        showCancelButton: true,
+        confirmButtonText: '<swal-button type="confirm">Save As</swal-button>',
+        cancelButtonText: '<swal-button type="cancel">Cancel</swal-button>',
+        focusConfirm: false,
+        preConfirm: () => {
+            const category = document.getElementById("category-select").value;
+            const challenge = document.getElementById("swal-input1").value;
+
+            if (!category || !challenge) {
+                Swal.showValidationMessage("Please enter both category and challenge.");
+                return false;
+            }  
+    
+            return { category, challenge };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { category, challenge } = result.value;
+            Swal.fire(`Category: ${category}, Challenge: ${challenge}`, "", "success");
+        } else if (result.isDenied) {
+            Swal.fire("Changes discarded", "", "info");
+        }
+    });
+}
+
+function editChallenge(form) {
+    Swal.fire({
+        title: "Edit Challenge",
+        html: `
+            <label>Select a category:</label>
+            <select id="category-select" class="swal2-select" style="width: 80%;">
+                <option value="physical">Select</option>
+                <option value="physical">Physical</option>
+                <option value="well_being">Well-being</option>
+                <option value="nutrition">Nutrition</option>
+            </select>
+            <label>Challenge:</label>
+            <input id="swal-input1" class="swal2-input" style="width: 80%;">
+        `,
+        showCancelButton: true,
+        confirmButtonText: '<swal-button type="confirm">Save As</swal-button>',
+        cancelButtonText: '<swal-button type="cancel">Cancel</swal-button>',
+        focusConfirm: false,
+        preConfirm: () => {
+            const category = document.getElementById("category-select").value;
+            const challenge = document.getElementById("swal-input1").value;
+
+            if (!category || !challenge) {
+                Swal.showValidationMessage("Please enter both category and challenge.");
+                return false;
+            }
+            return { category, challenge };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { category, challenge } = result.value;
+            Swal.fire(`Category: ${category}, Challenge: ${challenge}`, "", "success");
+        } else if (result.isDenied) {
+            Swal.fire("Changes discarded", "", "info");
+        }
+    });
+}
+
+function addUser(form) {
+    Swal.fire({
+        title: "Add User",
+        input: "email",
+        inputLabel: "Your email address",
+        inputPlaceholder: "Enter your email address",
+        html: `
+            <label>First Name:</label>
+            <input id="swal-input1" class="swal2-input" style="width: 80%;">
+            <label>Last Name:</label>
+            <input id="swal-input2" class="swal2-input" style="width: 80%;">
+        `,
+        showCancelButton: true,
+        confirmButtonText: '<swal-button type="confirm">Save As</swal-button>',
+        cancelButtonText: '<swal-button type="cancel">Cancel</swal-button>',
+        focusConfirm: false,
+        preConfirm: () => {
+            const email = Swal.getPopup().querySelector('[type="email"]').value;
+            const input1 = document.getElementById("swal-input1").value;
+            const input2 = document.getElementById("swal-input2").value;
+    
+            if (!email || !input1 || !input2) {
+                Swal.showValidationMessage("Please enter all fields.");
+            }
+    
+            return { email, input1, input2 };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { email, input1, input2 } = result.value;
+            Swal.fire(`Email: ${email}, First Name: ${input1}, Last Name: ${input2}`, "", "success");
+        } else if (result.isDenied) {
+            Swal.fire("Changes discarded", "", "info");
+        }
+    });  
+}
+
+function editUser(form) {
+    Swal.fire({
+        title: "Edit User",
+        input: "email",
+        inputLabel: "Your email address",
+        inputPlaceholder: "Enter your email address",
+        html: `
+            <label>First Name:</label>
+            <input id="swal-input1" class="swal2-input" style="width: 80%;">
+            <label>Last Name:</label>
+            <input id="swal-input2" class="swal2-input" style="width: 80%;">
+        `,
+        showCancelButton: true,
+        confirmButtonText: '<swal-button type="confirm">Save As</swal-button>',
+        cancelButtonText: '<swal-button type="cancel">Cancel</swal-button>',
+        focusConfirm: false,
+        preConfirm: () => {
+            const email = Swal.getPopup().querySelector('[type="email"]').value;
+            const input1 = document.getElementById("swal-input1").value;
+            const input2 = document.getElementById("swal-input2").value;
+    
+            if (!email || !input1 || !input2) {
+                Swal.showValidationMessage("Please enter all fields.");
+            }
+    
+            return { email, input1, input2 };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { email, input1, input2 } = result.value;
+            Swal.fire(`Email: ${email}, First Name: ${input1}, Last Name: ${input2}`, "", "success");
+        } else if (result.isDenied) {
+            Swal.fire("Changes discarded", "", "info");
+        }
+    });
+    
+}
+
+function addAdmin(form) {
+    Swal.fire({
+        title: "Add Admin",
+        input: "email",
+        inputLabel: "Your email address",
+        inputPlaceholder: "Enter your email address",
+        html: `
+            <label>First Name:</label>
+            <input id="swal-input1" class="swal2-input" style="width: 80%;">
+            <label>Last Name:</label>
+            <input id="swal-input2" class="swal2-input" style="width: 80%;">
+        `,
+        showCancelButton: true,
+        confirmButtonText: '<swal-button type="confirm">Save As</swal-button>',
+        cancelButtonText: '<swal-button type="cancel">Cancel</swal-button>',
+        focusConfirm: false,
+        preConfirm: () => {
+            const email = Swal.getPopup().querySelector('[type="email"]').value;
+            const input1 = document.getElementById("swal-input1").value;
+            const input2 = document.getElementById("swal-input2").value;
+    
+            if (!email || !input1 || !input2) {
+                Swal.showValidationMessage("Please enter all fields.");
+            }
+    
+            return { email, input1, input2 };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { email, input1, input2 } = result.value;
+            Swal.fire(`Email: ${email}, First Name: ${input1}, Last Name: ${input2}`, "", "success");
+        } else if (result.isDenied) {
+            Swal.fire("Changes discarded", "", "info");
+        }
+    });
+    
+}
+
+function editAdmin(form) {
+    Swal.fire({
+        title: "Edit Admin",
+        input: "email",
+        inputLabel: "Your email address",
+        inputPlaceholder: "Enter your email address",
+        html: `
+            <label>First Name:</label>
+            <input id="swal-input1" class="swal2-input" style="width: 80%;">
+            <label>Last Name:</label>
+            <input id="swal-input2" class="swal2-input" style="width: 80%;">
+        `,
+        showCancelButton: true,
+        confirmButtonText: '<swal-button type="confirm">Save As</swal-button>',
+        cancelButtonText: '<swal-button type="cancel">Cancel</swal-button>',
+        focusConfirm: false,
+        preConfirm: () => {
+            const email = Swal.getPopup().querySelector('[type="email"]').value;
+            const input1 = document.getElementById("swal-input1").value;
+            const input2 = document.getElementById("swal-input2").value;
+    
+            if (!email || !input1 || !input2) {
+                Swal.showValidationMessage("Please enter all fields.");
+            }
+    
+            return { email, input1, input2 };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { email, input1, input2 } = result.value;
+            Swal.fire(`Email: ${email}, First Name: ${input1}, Last Name: ${input2}`, "", "success");
+        } else if (result.isDenied) {
+            Swal.fire("Changes discarded", "", "info");
+        }
+    });
+    
+}
+

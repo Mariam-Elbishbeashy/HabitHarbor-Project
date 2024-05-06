@@ -153,3 +153,8 @@
     box-shadow: #caf746 0px 0px 0px 0px;
     transform: scale(1.07);
 }
+
+.swal2-input[type="email"] {
+    width: 70%;
+    margin-left: 75px;
+}
