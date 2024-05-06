@@ -136,8 +136,6 @@ function editGenderCountry() {
 
   document.getElementById('saveChangesButton').style.display = 'inline-block';
 
-  document.getElementById('editButton3').style.display = 'none';
-
   document.getElementById('editGenderButton').style.display = 'none';
 
   document.querySelector('.custom-info p').style.display = 'block';
@@ -409,7 +407,6 @@ function validatePasswords() {
   return true;
 }
 
-
 function changePassword() {
   if (validatePasswords()) {
     var modal = document.getElementById("saveChanges-modal");
@@ -444,7 +441,6 @@ function changePassword() {
   }
 }
 
-
 function showPassword(inputId, checkboxId) {
   var passwordInput = document.getElementById(inputId);
   var checkbox = document.getElementById(checkboxId);
@@ -470,7 +466,6 @@ function disableTextAreaAndCheckboxes(disabled) {
   var otherTextArea = document.getElementById("otherGoal");
   otherTextArea.disabled = disabled;
 }
-
 
 //feedback
 function starRating() {
@@ -676,24 +671,7 @@ function saveSocialLinksChanges() {
   });
 
   if (!hasErrors) {
-    var modal = document.getElementById("saveChanges-modal");
-    modal.style.display = "block";
   
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-  
-    var closeModalBtn = document.getElementById("closeModalBtn");
-    closeModalBtn.onclick = function() {
-      modal.style.display = "none";
-    }
-  
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
     var socialLinksInputs = document.querySelectorAll('#socialLinksContent input[type="text"]');
     var saveChangesButton = document.querySelector('#socialLinksContent button');
 
@@ -726,26 +704,24 @@ function saveSocialLinksChanges() {
   }
 }
 
-function toggleEdit() {
-  var socialLinksInputs = document.querySelectorAll('#socialLinksContent input[type="text"]');
-  var saveChangesButton = document.getElementById("saveChangesButton");
-  var editButton = document.getElementById("editButton2");
+function editSocialLinks() {
+  var facebookInput = document.getElementById("facebookLink");
+  var twitterInput = document.getElementById("twitterLink");
+  var instagramInput = document.getElementById("instagramLink");
+  var linkedinInput = document.getElementById("linkedinLink");
 
-  socialLinksInputs.forEach(function(input) {
-    input.value = ""; 
-  });
+  facebookInput.disabled = false;
+  twitterInput.disabled = false;
+  instagramInput.disabled = false;
+  linkedinInput.disabled = false;
 
-  socialLinksInputs.forEach(function(input) {
-    input.disabled = !input.disabled;
-  });
+  facebookInput.value = "";
+  twitterInput.value = "";
+  instagramInput.value = "";
+  linkedinInput.value = "";
 
-  if (saveChangesButton.style.display === "none") {
-    saveChangesButton.style.display = "block";
-    editButton.style.display = "none";
-  } else {
-    saveChangesButton.style.display = "none";
-    editButton.style.display = "block";
-  }
+  document.querySelector('#socialLinksContent button').style.display = "inline";
+  document.getElementById("editButton2").style.display = "none";
 }
 
 function openLink(linkId) {

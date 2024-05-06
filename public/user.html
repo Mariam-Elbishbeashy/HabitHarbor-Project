@@ -9,6 +9,9 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="styles/user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -115,23 +118,23 @@
                 <div class="general">
                   <div class="general-section">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" value="Sondos" readonly>
+                    <input type="text" id="firstName" value="Ali" readonly>
                   </div>
                   <div class="general-section">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" value="Mohamed" readonly>
+                    <input type="text" id="lastName" value="Ahmed" readonly>
                   </div>
                 </div>
                 <div class="general">
                   <div class="general-section">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" value="sondos123" readonly>
+                    <input type="text" id="username" value="ali123" readonly>
                   </div>
                 </div>
                 <div class="general">
                   <div class="general-section">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" value="sondos@gmail.com" readonly>
+                    <input type="email" id="email" value="Ali@gmail.com" readonly>
                   </div>
                 </div>
                 <button onclick="editGeneralInfo()">Edit</button>
@@ -139,6 +142,7 @@
             </div>
 
             <div id="infoContent" class="content">
+                <div class="ageNumber">
                 <label for="age"><b>Age:</b></label>
                 <input type="text" id="age" value="25" readonly>
                             
@@ -148,7 +152,7 @@
                         
                 <button onclick="editInfo()" id="editButton3">Edit</button> 
                 <div class="space"></div> 
-                                       
+            </div>  
                 <label for="gender"><b>Gender:</b></label>
                 <div id="gender">
                     <input type="radio" id="male" name="gender" value="male" checked> 
@@ -213,6 +217,7 @@
                  
                 <div class="user-profile custom-info">
                     <p>Please choose your gender and country and click "Save Changes" to ensure they are saved.</p>
+                    <h6>Please choose your gender and country and <br> click "Save Changes" to ensure they are saved. </h6>
                 </div>
                 <button onclick="saveGenderCountryChanges()" id="saveChangesButton">Save Changes</button>
                 <button id="editGenderButton" onclick="editGenderCountry()" style="display: none;">Edit</button>
@@ -224,21 +229,21 @@
                 <div class="user-profile">
                     <div class="heightWeight">
                         <label for="height">Height (cm):</label>
-                        <input type="text" id="heightCm" value="170 cm" readonly>
+                        <input type="text" id="heightCm" value="176 cm" readonly>
                     </div>
                     <div class="heightWeight">
                         <label for="weight">Weight (kg):</label>
-                        <input type="text" id="weightKg" value="65 kg" readonly>
+                        <input type="text" id="weightKg" value="84 kg" readonly>
                     </div>
                 </div>
                 <div class="user-profile">
                     <div class="heightWeight">
                         <label for="height">Height (ft):</label>
-                        <input type="text" id="heightFt" value="5.57 ft" readonly>
+                        <input type="text" id="heightFt" value="5.77 ft" readonly>
                     </div>
                     <div class="heightWeight">
                         <label for="weight">Weight (lbs):</label>
-                        <input type="text" id="weightLbs" value="143.3 lbs" readonly>
+                        <input type="text" id="weightLbs" value="187.39 lbs" readonly>
                     </div>
                 </div>
                 <section class="output">
@@ -344,7 +349,7 @@
         </div>
         <div class="user-profile">
             <button id="saveChangesButton" onclick="saveSocialLinksChanges()">Save Changes</button>
-            <button id="editButton2" style="display: none;" onclick="toggleEdit()">Edit</button>
+            <button id="editButton2" style="display: none;" onclick="editSocialLinks()">Edit</button>
         </div>
     </div>
 </div>
@@ -388,7 +393,6 @@
         <button onclick="changePassword()">Save Changes</button>
     </div>
 </div>
-
 
     
     <!--feedback-->

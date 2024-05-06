@@ -148,7 +148,7 @@ body{
   background-color: #CAF746; 
   width: 100px; 
   height: 100px; 
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .bigger-box {
@@ -342,6 +342,12 @@ opacity: 0.7;
   font-size: 14px; 
 }
 
+.user-profile h6 {
+  color: red;
+  font-size: 10px;
+  display: none; 
+}
+
 .user-profile input[type="text"] {
   border: none;
   background-color: #f2f2f2;
@@ -395,6 +401,11 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 /*info*/
+
+.ageNumber
+{
+ width:80%;
+}
 
 #gender {
   display: flex;
@@ -526,7 +537,6 @@ background-position: calc(100% - 15px) 1em, calc(100% - 15px) 1em;
   color: slategray;
 }
 
-
 .weight-height-content {
   position: fixed;
   top: 50%;
@@ -572,12 +582,6 @@ background-position: calc(100% - 15px) 1em, calc(100% - 15px) 1em;
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-
-@media screen and (max-width: 600px) {
-  .weight-height-content {
-    width: 90%;
-  }
 }
 
 .weight-height-content h2 {
@@ -840,7 +844,6 @@ cursor: pointer;
   }
 }
 
-
 .close {
   color: #aaa;
   float: right;
@@ -917,13 +920,11 @@ cursor: pointer;
   color: lightgrey;
 }
 
-
 .social-links {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
-
 
 .social-links input[type="text"] {
   width:50%;
@@ -954,7 +955,6 @@ cursor: pointer;
   border: 2px solid #CAF746; 
 }
 
-
 .social-links a {
   text-decoration: none;
   color: #98b935;
@@ -981,4 +981,131 @@ cursor: pointer;
 
 .social-links a:hover::after {
   transform: scale(1.1); 
+}
+
+/*mobile phones*/
+@media only screen and (max-width: 390px) {
+  .container {
+    grid-gap: 0px;
+  }
+  .Header { 
+    padding: 5px; 
+  }
+  
+  .website-name{
+    font-size: 1.2rem; 
+  }
+  
+  .input-container{
+    padding-right: 5px; 
+  }
+  
+  .Header input{
+    height: 24px; 
+    padding-right: 20px; 
+    padding-left: 10px;
+    font-size: 12px; 
+  }
+  .left-panel {
+    width: 80px;
+  }
+  .navbar { 
+    width: 80%; 
+    margin-left: -10px; 
+    border-radius: 15px; 
+  }
+  .icons
+  {
+    margin-right:10px;
+  }
+  .card {
+    grid-template-columns: 100px auto; 
+    grid-template-rows: 50vh; 
+    padding:0px;
+    margin: 0px;
+    grid-template-rows: 0.1fr 3.5fr 0.2fr;
+  }
+  .top-box, .smaller-box {
+    display: none;
+  }
+  .user-profile {
+    margin-bottom: 50px;
+  }
+  .feedback-section
+ {
+   padding:0px;
+ }
+
+.rating .fas
+{
+ font-size: 20px;
+}
+
+.content select
+{
+  width:80px;
+}
+
+.user-profile p
+{
+  display:none;
+}
+
+.user-profile h6
+{
+  display: block;
+}
+
+#gender
+{
+  gap:10px;
+}
+.output #bmi {
+  font-size: 2rem; 
+}
+
+.bmi-scale div {
+  font-size: 0.5rem; 
+}
+
+.bmi-scale h4 {
+  font-size: 0.5rem; 
+}
+
+button {
+  padding: 8px 16px; 
+  font-size: 14px; 
+}
+
+#countryCode {
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 20px;
+  background-color: #f8f8f8;
+}
+.modal-content {
+  width: 70%;
+  height:300px; 
+  }
+  .edit-modal-content { 
+    width: 70%; 
+   }
+   .ageNumber
+   {
+    width:70%;
+   }
+   .left-panel li {
+    padding: 15px; 
+    font-size: 15px;
+  }
+  .social-links i {
+    font-size: 15px;
+  }
+  .social-links a {
+    text-decoration: none;
+    color: #98b935;
+    font-size: 12px;
+    transition: color 0.3s, transform 0.3s;
+  }
 }
