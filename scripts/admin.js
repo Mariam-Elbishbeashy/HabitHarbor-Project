@@ -68,13 +68,16 @@ function displayAdmins() {
     const adminContent = document.getElementById('admin-content');
     
     adminContent.innerHTML = '';
+
     const addButton = document.createElement('button');
     addButton.id = 'add-btn';
     addButton.className = 'admin-btn';
     addButton.classList.add('add-btn');
     addButton.textContent = 'Add';
     adminContent.appendChild(addButton);
+
     const admins = ['Lara Khaled'];
+
     admins.forEach(admin => {
 
         const adminDiv = document.createElement('div');
@@ -89,7 +92,7 @@ function displayAdmins() {
 
         const editAdminBtn = document.createElement('button');
         editAdminBtn.className = 'admin-btn';
-        editAdminBtn.id = 'edit-btn'
+        editAdminBtn.id = 'edit-btn';
         editAdminBtn.innerHTML = `
             <i class="bi bi-pencil"></i>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -107,15 +110,16 @@ function displayAdmins() {
                 <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
             </svg>
         `;
+        
         removeAdminBtn.addEventListener('click', function() {
-            // Call deleteForm function when remove button is clicked
             deleteForm(admin);
         });
+
         addButton.addEventListener('click', function() {
             addAdmin(admin);
         });
 
-        editAdminBtnButton.addEventListener('click', function() {
+        editAdminBtn.addEventListener('click', function() {
             editAdmin(admin);
         });
         buttonsContainer.appendChild(editAdminBtn);
