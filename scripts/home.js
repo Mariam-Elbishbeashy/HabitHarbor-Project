@@ -168,3 +168,25 @@ function modalForm(form){
         imageAlt: "Custom image"
       });
 }
+
+//for smoother navbar
+document.addEventListener('DOMContentLoaded', function () {
+    const iconContainers = document.querySelectorAll(".icon-container");
+
+    iconContainers.forEach(function (container) {
+        container.addEventListener('click', function (event) {
+            const href = this.querySelector('a').getAttribute('href');
+            const isActive = this.classList.contains('active');
+
+            iconContainers.forEach(function (icon) {
+                icon.classList.remove('active');
+            });
+
+            if (!isActive) {
+                this.classList.add('active');
+                window.location.href = href; 
+            }
+            event.preventDefault(); 
+        });
+    });
+});
